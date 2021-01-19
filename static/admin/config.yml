@@ -2,8 +2,8 @@ backend:
   name: github
   repo: oparin10/atlas-gatsby-starter
   branch: main
-  base_url: https://us-central1-atlas-prototype-server.cloudfunctions.net # The base URL for your Firebase Function
-  auth_endpoint: /oauth/auth # The path to the OAuth endpoint of the function
+  # base_url: https://us-central1-atlas-prototype-server.cloudfunctions.net # The base URL for your Firebase Function
+  # auth_endpoint: /oauth/auth # The path to the OAuth endpoint of the function
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"

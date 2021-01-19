@@ -67,6 +67,9 @@
     "./gatsby-config.js",
     "./gatsby-ssr.js",
     "./src/html.js",
-    "./config/**"
+    "./config/**",
+    "./src/cms/cms.js",
+    "./public/**",
+    "./src/helper/**"
   ]
 }

@@ -11,6 +11,6 @@ export const theme = createMuiTheme({
   },
 
   typography: {
-    fontFamily: ["Barlow"],
+    fontFamily: "Barlow",
   },
 })

@@ -9,12 +9,15 @@
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@types/react-helmet": "^6.1.0",
     "axios": "^0.21.1",
-    "crossenv": "0.0.2-security",
+    "babel-plugin-styled-components": "^1.12.0",
+    "cross-env": "^7.0.3",
     "firebase": "^8.2.3",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
+    "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-netlify-cms": "^4.8.0",
     "gatsby-plugin-offline": "^3.4.0",
     "gatsby-plugin-react-helmet": "^3.4.0",
@@ -31,7 +34,9 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-lazyload": "^3.1.0"
+    "react-lazyload": "^3.1.0",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.1.3"
   },
   "devDependencies": {
     "prettier": "2.2.1"

@@ -1,6 +1,7 @@
 import React from "react"
+import { PageProps } from "gatsby"
 
-function Post({ pageContext }) {
+const Post: React.FC<any> = ({ pageContext }) => {
   return <div>Pass data via gatsby-node.js createPages API via context</div>
 }
 

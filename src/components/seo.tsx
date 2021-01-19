@@ -5,25 +5,16 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
+interface SEOProps {
+  description?: string
+  lang?: string
+  meta?: Array<{}>
+  title?: string
+}
+
 import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-
-type MetaItem = {
-  name: string
-  content: string
-}
-
-type SEOProps = {
-  title?: string
-  description?: string
-  url?: string
-  author?: string
-  keywords?: string[]
-  meta?: any
-  lang?: string
-  image?: string
-}
 
 function SEO({ description, lang, meta, title }: SEOProps) {
   const { site } = useStaticQuery(
@@ -40,8 +31,8 @@ function SEO({ description, lang, meta, title }: SEOProps) {
     `
   )
 
-  const metaDescription: string = description || site.siteMetadata.description
-  const defaultTitle: string = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
 
   return (
     <Helmet
@@ -50,40 +41,7 @@ function SEO({ description, lang, meta, title }: SEOProps) {
       }}
       title={title}
       titleTemplate={defaultTitle}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      meta={[]}
     />
   )
 }

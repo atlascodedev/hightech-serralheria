@@ -5,6 +5,9 @@ const randomstring = require("randomstring")
 
 // Function to authenticate your Github OAUTH app (Netlify CMS) Note that you have to setup environment variables through the Firebase CLI for oauth values
 
+
+// Create a Github OAUTH app, and set up cloud function's environment variables like this: firebase functions:config:set oauth.client_id=yourclientid oauth.client_secret=yourclientsecret and then call like the example above
+
 const oauth = functions.config().oauth
 const oauth_provider = oauth.provider || "github"
 

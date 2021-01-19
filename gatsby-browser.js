@@ -28,7 +28,6 @@ import "@fontsource/barlow"
 const app = firebase.initializeApp(firebaseConfig)
 
 const firestore = app.firestore()
-const firestoreNamespace = firebase.firestore.FieldValue
 
 if (process.env.NODE_ENV !== "production") {
   firestore.useEmulator("localhost", 8080)
@@ -38,12 +37,23 @@ if (process.env.NODE_ENV !== "production") {
 
 // Wraps root element with Firebase, css reset and Material UI theme provider. If you're planning on using Redux, use this functional component and wrap root with your store provider
 
-const App = ({ root }) => {
+const FireApp = ({ root }) => {
   return (
     <FirebaseContext.Provider value={{ app, firestore }}>
       <CssBaseline />
       <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
     </FirebaseContext.Provider>
+  )
+}
+
+// Without Firebase
+
+const App = ({ root }) => {
+  return (
+    <div>
+      <CssBaseline />
+      <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
+    </div>
   )
 }
 

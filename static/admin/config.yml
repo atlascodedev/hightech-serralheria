@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: oparin10/atlas-gatsby-starter
+  branch: main
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+media_folder: static/img
+public_folder: /img
+locale: en
+display_url: "https://atlascode.dev"
+site_url: "https://atlascode.dev"
+logo_url: https://i.imgur.com/gY3CoNL.png
+slug:
+  clean_accents: true
+
+collections:
+  - name: "posts"
+    editor:
+      preview: false
+    label: "Post"
+    folder: "src/blog/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Content Type", name: "contentType", widget: "hidden", default: 'blogPost'}
+      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'post'}
+      - { label: 'Title', name: 'title', widget: 'string'}
+      - { label: 'Publish date', name: 'date', widget: 'datetime'}
+      - { label: 'Featured Image', name: 'featuredImage', widget: 'image'}
+      - { label: 'Post', name: 'body', widget: 'markdown'}

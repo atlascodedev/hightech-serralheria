@@ -5,11 +5,13 @@
   "version": "0.1.0",
   "author": "Aleksander Mirowsky <aleks@atlascode.dev>",
   "dependencies": {
+    "@fontsource/barlow": "^4.1.0",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "axios": "^0.21.1",
     "crossenv": "0.0.2-security",
+    "firebase": "^8.2.3",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",

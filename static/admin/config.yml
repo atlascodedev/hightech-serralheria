@@ -2,6 +2,8 @@ backend:
   name: github
   repo: oparin10/atlas-gatsby-starter
   branch: main
+  base_url: https://us-central1-atlas-prototype-server.cloudfunctions.net # The base URL for your Firebase Function
+  auth_endpoint: /oauth/auth # The path to the OAuth endpoint of the function
   commit_messages:
     create: "Create {{collection}} “{{slug}}”"
     update: "Update {{collection}} “{{slug}}”"
@@ -27,9 +29,19 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Content Type", name: "contentType", widget: "hidden", default: 'blogPost'}
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'post'}
-      - { label: 'Title', name: 'title', widget: 'string'}
-      - { label: 'Publish date', name: 'date', widget: 'datetime'}
-      - { label: 'Featured Image', name: 'featuredImage', widget: 'image'}
-      - { label: 'Post', name: 'body', widget: 'markdown'}
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: "hidden",
+          default: "blogPost",
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "post",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image" }
+      - { label: "Post", name: "body", widget: "markdown" }

@@ -74,33 +74,6 @@ collections:
           widget: "image",
         }
       - { label: "Descrição do serviço", name: "body", widget: "text" }
-  - name: "segurancaEletronica"
-    editor:
-      preview: false
-    label: "Serviços de segurança eletrônica"
-    folder: "src/cms_data/segurancaEletronica"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {
-          label: "Content Type",
-          name: "contentType",
-          widget: hidden,
-          default: segurancaEletronica,
-        }
-      - {
-          label: "Template Key",
-          name: "templateKey",
-          widget: hidden,
-          default: "ignore",
-        }
-      - { label: "Nome do serviço", name: "title", widget: "string" }
-      - {
-          label: "Imagem para o serviço",
-          name: "featuredImage",
-          widget: "image",
-        }
-      - { label: "Descrição do serviço", name: "body", widget: "text" }
 
   - name: "eletrica"
     editor:

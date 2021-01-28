@@ -1,5 +1,5 @@
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = action
+  const { createTypes } = actions
 
   const typeDefs = `
     type MarkdownRemark implements Node {

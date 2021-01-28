@@ -14,16 +14,16 @@ public_folder: /img
 locale: en
 display_url: "https://atlascode.dev"
 site_url: "https://atlascode.dev"
-logo_url: https://i.imgur.com/gY3CoNL.png
+logo_url: https://i.imgur.com/LOXhnE2.png
 slug:
   clean_accents: true
 
 collections:
-  - name: "posts"
+  - name: "serralheria"
     editor:
       preview: false
-    label: "Post"
-    folder: "src/blog/posts"
+    label: "Serviços de serralheria"
+    folder: "src/cms_data/serralheria"
     create: true
     slug: "{{slug}}"
     fields:
@@ -31,15 +31,101 @@ collections:
           label: "Content Type",
           name: "contentType",
           widget: "hidden",
-          default: "blogPost",
+          default: "serralheria",
         }
       - {
           label: "Template Key",
           name: "templateKey",
           widget: "hidden",
-          default: "post",
+          default: "ignore",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "featuredImage", widget: "image" }
-      - { label: "Post", name: "body", widget: "markdown" }
+      - { label: "Nome do serviço", name: "title", widget: "string" }
+      - {
+          label: "Imagem para o serviço",
+          name: "featuredImage",
+          widget: "image",
+        }
+      - { label: "Descrição do serviço", name: "body", widget: "text" }
+
+  - name: "segurancaEletronica"
+    editor:
+      preview: false
+    label: "Serviços de segurança eletrônica"
+    folder: "src/cms_data/segurancaEletronica"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: hidden,
+          default: segurancaEletronica,
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: hidden,
+          default: "ignore",
+        }
+      - { label: "Nome do serviço", name: "title", widget: "string" }
+      - {
+          label: "Imagem para o serviço",
+          name: "featuredImage",
+          widget: "image",
+        }
+      - { label: "Descrição do serviço", name: "body", widget: "text" }
+  - name: "segurancaEletronica"
+    editor:
+      preview: false
+    label: "Serviços de segurança eletrônica"
+    folder: "src/cms_data/segurancaEletronica"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: hidden,
+          default: segurancaEletronica,
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: hidden,
+          default: "ignore",
+        }
+      - { label: "Nome do serviço", name: "title", widget: "string" }
+      - {
+          label: "Imagem para o serviço",
+          name: "featuredImage",
+          widget: "image",
+        }
+      - { label: "Descrição do serviço", name: "body", widget: "text" }
+
+  - name: "eletrica"
+    editor:
+      preview: false
+    label: "Serviços de elétrica"
+    folder: "src/cms_data/eletrica"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: hidden,
+          default: eletrica,
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: hidden,
+          default: "ignore",
+        }
+      - { label: "Nome do serviço", name: "title", widget: "string" }
+      - {
+          label: "Imagem para o serviço",
+          name: "featuredImage",
+          widget: "image",
+        }
+      - { label: "Descrição do serviço", name: "body", widget: "text" }

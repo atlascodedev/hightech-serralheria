@@ -10,6 +10,11 @@ interface IndexProps {
   onceAgain: boolean
 }
 
+export type MenuItem = {
+  menuName: string
+  reference: React.RefObject<HTMLElement> | null
+}
+
 const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => (
   <Layout>
     <SEO title="Home" />

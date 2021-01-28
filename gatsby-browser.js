@@ -9,13 +9,13 @@ import "@fontsource/barlow"
 
 // Uncomment following lines if you're using Swiper.js
 
-// require("swiper/swiper.min.css")
-// require("swiper/components/navigation/navigation.min.css")
-// require("swiper/components/pagination/pagination.min.css")
-// require("swiper/components/scrollbar/scrollbar.min.css")
-// require("swiper/components/effect-fade/effect-fade.min.css")
-// require("swiper/components/scrollbar/scrollbar.min.css")
-// require("swiper/components/lazy/lazy.min.css")
+require("swiper/swiper.min.css")
+require("swiper/components/navigation/navigation.min.css")
+require("swiper/components/pagination/pagination.min.css")
+require("swiper/components/scrollbar/scrollbar.min.css")
+require("swiper/components/effect-fade/effect-fade.min.css")
+require("swiper/components/scrollbar/scrollbar.min.css")
+require("swiper/components/lazy/lazy.min.css")
 
 // Without Firebase
 

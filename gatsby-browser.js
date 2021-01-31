@@ -27,10 +27,10 @@ require("swiper/components/lazy/lazy.min.css")
 
 const App = ({ root }) => {
   return (
-    <div>
+    <React.Fragment>
       <CssBaseline />
       <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
-    </div>
+    </React.Fragment>
   )
 }
 

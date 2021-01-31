@@ -1,9 +1,8 @@
+import { MenuItem } from "@material-ui/core"
 import React from "react"
-import { Link } from "gatsby"
+import converToSlug from "../helper/converToSlug"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import AppLayout from "../layout"
 
 interface IndexProps {
   testMe: Array<string>
@@ -12,24 +11,85 @@ interface IndexProps {
 
 export type MenuItem = {
   menuName: string
-  reference: React.RefObject<HTMLElement> | null
+  reference: React.RefObject<any> | null
+  itemDocumentId: string | null
+  sectionComponent?: any
+  childComponent?: any
 }
 
-const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>
-      This is Atlas Code's Gatsby starter adaptation for developing using Gatsby
-      + Netlify CMS + Firebase + Github Actions + Cloud Functions for a fully
-      functional, dynamic, fully featured, progressive web application that can
-      do anything whilst being blazing fast 🚀🚀🚀🔥🔥🔥.
-    </p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-  </Layout>
-)
+let SectionComponentTest: React.FC<any> = props => {
+  return <div>hello </div>
+}
+
+const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
+  const homeRef = React.useRef<HTMLDivElement | null>(null)
+  const aboutUsRef = React.useRef<HTMLDivElement | null>(null)
+  const servicesRef = React.useRef<HTMLDivElement | null>(null)
+  const projectsRef = React.useRef<HTMLDivElement | null>(null)
+  const contactRef = React.useRef<HTMLDivElement | null>(null)
+
+  let menu: Array<MenuItem> = [
+    {
+      menuName: "Home",
+      reference: homeRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: null,
+    },
+
+    {
+      menuName: "Sobre nós",
+      reference: aboutUsRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: null,
+    },
+
+    {
+      menuName: "Serviços",
+      reference: servicesRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: null,
+    },
+    {
+      menuName: "Últimos projetos",
+      reference: projectsRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: null,
+    },
+
+    { menuName: "Contato", reference: contactRef, itemDocumentId: null },
+  ]
+
+  for (let i = 0; i < menu.length; i++) {
+    const element = menu[i]
+
+    let localID = (element.itemDocumentId = converToSlug(element.menuName))
+
+    element.sectionComponent = (
+      <div ref={element.reference} id={localID}>
+        {element.childComponent ? (
+          element.childComponent
+        ) : (
+          <div> No child component was passed </div>
+        )}
+      </div>
+    )
+  }
+
+  console.log(menu)
+
+  return (
+    <AppLayout menu={menu}>
+      {menu.map(
+        ({ menuName, itemDocumentId, reference, sectionComponent }, index) => (
+          <React.Fragment key={index}>{sectionComponent}</React.Fragment>
+        )
+      )}
+    </AppLayout>
+  )
+}
 
 export default IndexPage

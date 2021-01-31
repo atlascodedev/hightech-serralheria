@@ -17,12 +17,9 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, menu }) => {
       <Helmet>
         <title>High Tech Serralheria</title>
       </Helmet>
-      <Navbar menu={menu} logo={logo} />
+      <Navbar height={"50px"} menu={menu} logo={logo} />
       <main>{children}</main>
 
-      <div>
-        <InfoSection></InfoSection>
-      </div>
       <Footer />
     </React.Fragment>
   )

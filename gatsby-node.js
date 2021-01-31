@@ -20,8 +20,8 @@ exports.createSchemaCustomization = ({ actions }) => {
         phoneTwo: String
         mailOne: String
         mailTwo: String
-        instagramURL: String
-        facebookURL: String
+        instagramUrl: String
+        facebookUrl: String
         whatsAppNum: String
         whatsAppMessage: String
         address: String

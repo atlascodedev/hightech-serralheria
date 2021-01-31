@@ -4,6 +4,12 @@ import { theme } from "./src/theme"
 
 // Import fonts and CSS that should be seen globally to avoid SSR bugs
 import "@fontsource/barlow"
+import "@fontsource/barlow/400.css"
+import "@fontsource/barlow/500.css"
+import "@fontsource/barlow/600.css"
+import "@fontsource/barlow/700.css"
+import "@fontsource/barlow/800.css"
+import "@fontsource/barlow/900.css"
 
 // For some reason unknown to me you need to use CommonJS syntax to import some css from certain npm packages
 

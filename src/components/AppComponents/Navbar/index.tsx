@@ -50,14 +50,14 @@ type AppDrawerMainProps = {
 const AtlasAppBarBase = styled.div<AtlasBarBaseProp>`
   display: flex;
   width: 100%;
-  background-color: ${props => (props.top ? "transparent" : "#fff")};
+  background-color: ${props => (props.top ? "#fff" : "#fff")};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  min-height: ${props => (props.minHeight ? props.minHeight : "60px")};
+  min-height: ${props => (props.minHeight ? props.minHeight : "65px")};
   position: fixed;
   z-index: 1199;
   justify-content: center;
   height: ${props =>
-    props.top ? "90px" : props.minHeight ? props.minHeight : "60px"};
+    props.top ? "65px" : props.minHeight ? props.minHeight : "65px"};
   transition: all 0.5s ease;
 
   /* Additional styles to prevent Firefox 2D rendering and transition bugs that will lead to flickering on said transition */
@@ -71,9 +71,9 @@ const AtlasAppBarBase = styled.div<AtlasBarBaseProp>`
 `
 
 const AtlasAppBarHeightFix = styled.div<AtlasBarBaseProp>`
-  min-height: ${props => (props.minHeight ? props.minHeight : "60px")};
+  min-height: ${props => (props.minHeight ? props.minHeight : "65px")};
   height: ${props =>
-    props.top ? "90px" : props.minHeight ? props.minHeight : "60px"};
+    props.top ? "65px" : props.minHeight ? props.minHeight : "65px"};
   top: 0;
   left: 0;
   width: 100%;
@@ -82,7 +82,7 @@ const AtlasAppBarHeightFix = styled.div<AtlasBarBaseProp>`
   display: block;
 
   @media (min-width: 1024px) {
-    display: none;
+    display: block;
   }
 `
 
@@ -99,7 +99,7 @@ const AtlasAppBarItemList = styled.ul<AtlasNavbarListProp>`
   flex-direction: row;
   margin: 0;
   width: 100%;
-  color: ${props => (props.top ? "#fff" : "#222")};
+  color: ${props => (props.top ? "#222" : "#222")};
   -webkit-text-stroke: 0.1px black;
   text-rendering: optimizeLegibility;
   padding: 0;
@@ -118,15 +118,16 @@ const AtlasAppBarItemList = styled.ul<AtlasNavbarListProp>`
 
 const AtlasAppBarLogo = styled.img<AtlasNavbarLogo>`
   cursor: pointer;
-  width: 145px;
+  width: 100px;
   height: 100%;
   flex-grow: 0;
-  margin-left: ${props => (props.top ? "2px" : "2px")};
+  margin-left: 15px;
+  /* margin-left: ${props => (props.top ? "2px" : "2px")}; */
   transition: all 0.5s ease;
   @media (min-width: 768px) {
     margin-left: ${props => (props.top ? "2em" : "20px")};
-    width: ${props => (props.top ? "350px" : "100px")};
-    height: ${props => (props.top ? "150px" : "100%")};
+    width: ${props => (props.top ? "100px" : "100px")};
+    height: ${props => (props.top ? "100%" : "100%")};
   }
 `
 
@@ -212,30 +213,32 @@ const Navbar: React.FC<NavbarMainProps> = ({
             <AtlasAppBarItemList top={isTop}>
               {menu ? (
                 menu.map((menuItem: MenuItem, index: number) => {
-                  return (
-                    <li
-                      key={index}
-                      onClick={() => {
-                        scrollIntoViewHelper(
-                          menuItem.reference,
-                          menuItem.menuName
-                        )
-                      }}
-                      onMouseEnter={() => {
-                        global.window.document.getElementById(
-                          `effect${index}`
-                        )!.style.width = "100%"
-                      }}
-                      onMouseLeave={() => {
-                        global.window.document.getElementById(
-                          `effect${index}`
-                        )!.style.width = "50%"
-                      }}
-                    >
-                      <div>{menuItem.menuName}</div>
-                      <ListItemUnderEffect id={"effect" + index} />
-                    </li>
-                  )
+                  if (menuItem.menuName && menuItem.menuName !== "") {
+                    return (
+                      <li
+                        key={index}
+                        onClick={() => {
+                          scrollIntoViewHelper(
+                            menuItem.reference,
+                            menuItem.menuName
+                          )
+                        }}
+                        onMouseEnter={() => {
+                          global.window.document.getElementById(
+                            `effect${index}`
+                          )!.style.width = "100%"
+                        }}
+                        onMouseLeave={() => {
+                          global.window.document.getElementById(
+                            `effect${index}`
+                          )!.style.width = "50%"
+                        }}
+                      >
+                        <div>{menuItem.menuName}</div>
+                        <ListItemUnderEffect id={"effect" + index} />
+                      </li>
+                    )
+                  }
                 })
               ) : (
                 <li>No menu items found</li>
@@ -304,20 +307,24 @@ const AppDrawer: React.FC<AppDrawerMainProps> = ({
         </Paper>
         <List className={classes.appDrawerList}>
           {menu ? (
-            menu.map((item, index) => (
-              <Button
-                onClick={() => {
-                  scrollIntoViewHelper(
-                    item.reference,
-                    item.menuName,
-                    handleClose
-                  )
-                }}
-                key={index}
-              >
-                <ListItem>{item.menuName} </ListItem>
-              </Button>
-            ))
+            menu.map((item: MenuItem, index) => {
+              if (item.menuName && item.menuName !== "") {
+                return (
+                  <Button
+                    onClick={() => {
+                      scrollIntoViewHelper(
+                        item.reference,
+                        item.menuName,
+                        handleClose
+                      )
+                    }}
+                    key={index}
+                  >
+                    <ListItem>{item.menuName} </ListItem>
+                  </Button>
+                )
+              }
+            })
           ) : (
             <h1>no list items find</h1>
           )}

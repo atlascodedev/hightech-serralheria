@@ -1,8 +1,18 @@
 import { MenuItem } from "@material-ui/core"
 import React from "react"
+import AboutUs from "../components/AppComponents/AboutUs"
+import DefenseSection from "../components/AppComponents/DefenseSection"
+import Hero from "../components/AppComponents/Hero"
 import converToSlug from "../helper/converToSlug"
+import heroImg from "../images/hero-img.webp"
+import heroImg2 from "../images/impact-img.webp"
+import heroImgMobile from "../images/impact-image-mobile.webp"
 
 import AppLayout from "../layout"
+import ServiceSection from "../components/AppComponents/ServiceSection"
+import PortfolioSection from "../components/AppComponents/Portfolio"
+import CourseContactForm from "../components/AppComponents/ContactFormMain"
+import ContactFormMain from "../components/AppComponents/ContactForm"
 
 interface IndexProps {
   testMe: Array<string>
@@ -10,15 +20,11 @@ interface IndexProps {
 }
 
 export type MenuItem = {
-  menuName: string
+  menuName: string | null
   reference: React.RefObject<any> | null
   itemDocumentId: string | null
   sectionComponent?: any
   childComponent?: any
-}
-
-let SectionComponentTest: React.FC<any> = props => {
-  return <div>hello </div>
 }
 
 const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
@@ -34,7 +40,27 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: homeRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: null,
+      childComponent: (
+        <Hero
+          mainText={
+            "Oferecemos soluções em serralheria, elétrica e segurança eletrônica."
+          }
+          heroImage={heroImg}
+          subText={
+            "Para cada situação temos uma solução confiável e satisfatória para nossos clientes."
+          }
+          callToActionRef={contactRef}
+          buttonText={"Faça seu orçamento"}
+        ></Hero>
+      ),
+    },
+
+    {
+      menuName: null,
+      reference: null,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: <DefenseSection></DefenseSection>,
     },
 
     {
@@ -42,7 +68,12 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: aboutUsRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: null,
+      childComponent: (
+        <AboutUs
+          backgroundImageMobile={heroImgMobile}
+          backgroundImage={heroImg2}
+        ></AboutUs>
+      ),
     },
 
     {
@@ -50,17 +81,33 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: servicesRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: null,
+      childComponent: (
+        <div>
+          <ServiceSection services={[]} serviceSectionTitle={"Serralheria"} />
+          <ServiceSection
+          services={[]}
+            rootContrast={true}
+            serviceSectionTitle={"Segurança eletrônica"}
+          />
+          <ServiceSection services={[]} serviceSectionTitle={"Elétrica"} />
+        </div>
+      ),
     },
     {
       menuName: "Últimos projetos",
       reference: projectsRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: null,
+      childComponent: <PortfolioSection />,
     },
 
-    { menuName: "Contato", reference: contactRef, itemDocumentId: null },
+    {
+      menuName: "Contato",
+      reference: contactRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: <ContactFormMain />,
+    },
   ]
 
   for (let i = 0; i < menu.length; i++) {

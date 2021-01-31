@@ -13,6 +13,8 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    "gatsby-plugin-styled-components",
+
     {
       resolve: "gatsby-plugin-material-ui",
       options: {
@@ -21,7 +23,6 @@ module.exports = {
         },
       },
     },
-    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {

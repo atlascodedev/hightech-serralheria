@@ -30,9 +30,9 @@ const App = ({ root }) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <MuiThemeProvider theme={theme}>
-        <StyledThemeProvider theme={styledTheme}>{root}</StyledThemeProvider>
-      </MuiThemeProvider>
+      <StyledThemeProvider theme={styledTheme}>
+        <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
+      </StyledThemeProvider>
     </React.Fragment>
   )
 }

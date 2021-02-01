@@ -13,6 +13,7 @@ import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
 import CourseContactForm from "../components/AppComponents/ContactFormMain"
 import ContactFormMain from "../components/AppComponents/ContactForm"
+import ContactSection from "../components/AppComponents/ContactSection"
 
 interface IndexProps {
   testMe: Array<string>
@@ -102,7 +103,9 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: projectsRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: <PortfolioSection />,
+      childComponent: (
+        <PortfolioSection portfolioSectionTitle="Nossos últimos serviços" />
+      ),
     },
 
     {
@@ -110,7 +113,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: contactRef,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: <ContactFormMain />,
+      childComponent: <ContactSection />,
     },
   ]
 

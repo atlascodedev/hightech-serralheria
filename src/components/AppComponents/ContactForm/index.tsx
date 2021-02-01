@@ -7,6 +7,7 @@ import { AccountCircle } from "@material-ui/icons"
 import FormikField from "../../UtilityComponents/FormikField"
 import MaskInput from "../../UtilityComponents/MaskInput"
 import ConfirmationDialog from "../../UtilityComponents/ConfirmationDialog"
+import axios from "axios"
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -122,15 +123,38 @@ const ContactFormMain = (props: Props) => {
   return (
     <React.Fragment>
       <div>
+        <ConfirmationDialog
+          type="success"
+          message={
+            "Obrigado pelo interesse! Sua mensagem foi enviada com sucesso, logo entraremos em contato com você através do número fornecido no formulário."
+          }
+          dialogClose={handleDialogClose}
+          open={dialog}
+        />
         <Formik
-          initialValues={initialFormValues}
+          initialValues={{ name: "", phone: "", email: "", message: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, actions) => {
-            console.log(values)
-
-            actions.resetForm()
-
-            actions.setSubmitting(false)
+            console.log(values.email, values.message, values.phone, values.name)
+            axios
+              .post(
+                "https://us-central1-atlascodedev-landing.cloudfunctions.net/api/sendMail/hightechserralheria",
+                {
+                  name: values.name,
+                  email: values.email,
+                  message: values.message,
+                  phone: values.phone,
+                }
+              )
+              .then(result => {
+                actions.setSubmitting(false)
+                actions.resetForm()
+                handleDialogOpen()
+              })
+              .catch(error => {
+                console.log(error)
+                actions.setSubmitting(false)
+              })
           }}
         >
           {formik => (
@@ -214,7 +238,7 @@ const ContactFormMain = (props: Props) => {
 
                   <Box display="flex" justifyContent="center" color={"#fff"}>
                     <Button
-                      onClick={() => formik.submitForm()}
+                      // onClick={() => formik.submitForm()}
                       color="primary"
                       type="submit"
                       disabled={!formik.isValid}

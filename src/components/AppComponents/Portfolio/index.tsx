@@ -77,7 +77,7 @@ const PortfolioSection = ({
               delay: 0,
               disableOnInteraction: false,
             },
-            slidesPerView: 4,
+            slidesPerView: 3,
             speed: 3000,
             loop: true,
           },

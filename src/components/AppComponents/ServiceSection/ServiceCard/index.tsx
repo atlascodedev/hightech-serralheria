@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { Url } from "url"
+import scrollIntoViewHelper from "../../../../helper/scrollIntoViewType"
 
 const ServiceCardBase = styled("div")`
   display: flex;
@@ -78,6 +79,8 @@ interface Props {
   serviceCardTitle?: string
   serviceCardText?: string
   serviceCardURL?: string
+  serviceCardCallToAction?: string
+  serviceCardRef?: React.RefObject<HTMLDivElement> | null
 }
 
 const ServiceCard = ({
@@ -85,6 +88,8 @@ const ServiceCard = ({
   serviceCardText = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque quis in quaerat magni sit voluptates ea explicabo animi, blanditiis vel cumque aliquid harum sed quas atque quod error impedit fugit nisi. Asperiores nostrum mollitia cum magni magnam, a sint voluptates quam nisi quidem fugiat aliquid suscipit corrupti, commodi aspernatur exercitationem ipsa  ",
   serviceCardTitle = "Lorem ipsum title",
   serviceCardURL = "#",
+  serviceCardCallToAction = "Call to action",
+  serviceCardRef = null,
 }: Props) => {
   return (
     <Box my={5}>
@@ -93,11 +98,21 @@ const ServiceCard = ({
         <ServiceCardBody>
           <ServiceCardTitle>{serviceCardTitle}</ServiceCardTitle>
           <ServiceCardText>{serviceCardText}</ServiceCardText>
-          <Link to={serviceCardURL}>
-            <Button variant="contained" color="primary">
-              Conheça o serviço
+          {serviceCardURL == "" || serviceCardURL == "#" ? (
+            <Button
+              onClick={() => scrollIntoViewHelper(serviceCardRef)}
+              variant="contained"
+              color="primary"
+            >
+              {serviceCardCallToAction}
             </Button>
-          </Link>
+          ) : (
+            <Link to={serviceCardURL}>
+              <Button variant="contained" color="primary">
+                {serviceCardCallToAction}
+              </Button>
+            </Link>
+          )}
         </ServiceCardBody>
       </ServiceCardBase>
     </Box>

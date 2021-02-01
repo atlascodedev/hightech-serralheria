@@ -2,12 +2,8 @@ import { useTheme } from "@material-ui/core"
 import React from "react"
 import styled from "styled-components"
 
-type AboutUsRootContainerProps = {
-  fontFamily: string
-}
-
-const AboutUsRootContainer = styled.div<AboutUsRootContainerProps>`
-  font-family: ${props => props.fontFamily};
+const AboutUsRootContainer = styled.div`
+  font-family: ${props => props.theme.typography.fontFamily};
 `
 
 const AboutUsGridContainer = styled.div`
@@ -75,13 +71,9 @@ const AboutUsCounterContainer = styled.div`
   }
 `
 
-type AboutUsCounterProps = {
-  textColor: string
-}
-
-const AboutUsCounter = styled.div<AboutUsCounterProps>`
+const AboutUsCounter = styled.div`
   font-weight: 900;
-  color: ${props => props.textColor};
+  color: ${props => props.theme.palette.primary.main};
   font-size: 50px;
   margin-top: 15px;
 
@@ -113,7 +105,7 @@ const AboutUs = ({
   const theme = useTheme()
 
   return (
-    <AboutUsRootContainer fontFamily={theme.typography.fontFamily as string}>
+    <AboutUsRootContainer>
       <AboutUsGridContainer>
         <AboutUsImageContainer
           imgMobile={backgroundImageMobile}
@@ -133,9 +125,7 @@ const AboutUs = ({
           </AboutUsMainText>
 
           <AboutUsCounterContainer>
-            <AboutUsCounter textColor={theme.palette.primary.main}>
-              + de 500
-            </AboutUsCounter>
+            <AboutUsCounter>+ de 500</AboutUsCounter>
             <AboutUsCounterText>clientes satisfeitos</AboutUsCounterText>
           </AboutUsCounterContainer>
         </AboutUsTextContainer>

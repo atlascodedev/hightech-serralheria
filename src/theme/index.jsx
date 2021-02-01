@@ -14,5 +14,20 @@ export const theme = createMuiTheme({
   typography: {
     fontFamily: "Barlow",
   },
-
 })
+
+export const styledTheme = {
+  palette: {
+    primary: {
+      main: "#289FEB",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#17396B",
+    },
+  },
+
+  typography: {
+    fontFamily: "Barlow",
+  },
+}

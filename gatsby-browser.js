@@ -1,6 +1,7 @@
 import React from "react"
 import { CssBaseline, MuiThemeProvider } from "@material-ui/core"
-import { theme } from "./src/theme"
+import { theme, styledTheme } from "./src/theme"
+import { ThemeProvider as StyledThemeProvider } from "styled-components"
 
 // Import fonts and CSS that should be seen globally to avoid SSR bugs
 import "@fontsource/barlow"
@@ -29,7 +30,9 @@ const App = ({ root }) => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
+      <MuiThemeProvider theme={theme}>
+        <StyledThemeProvider theme={styledTheme}>{root}</StyledThemeProvider>
+      </MuiThemeProvider>
     </React.Fragment>
   )
 }

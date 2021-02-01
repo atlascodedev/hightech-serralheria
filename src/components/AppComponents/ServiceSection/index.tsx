@@ -19,16 +19,11 @@ const ServiceSectionRoot = styled("div")<ServiceSectionRootProps>`
   }
 `
 
-type ServiceSectionTitleProps = {
-  titleFontFamily: string
-  titleColor: string
-}
-
-const ServiceSectionTitle = styled("div")<ServiceSectionTitleProps>`
+const ServiceSectionTitle = styled("div")`
   text-align: center;
   font-size: 30px;
-  font-family: ${props => props.titleFontFamily};
-  color: ${props => props.titleColor};
+  font-family: ${props => props.theme.typography.fontFamily};
+  color: ${props => props.theme.palette.primary.main};
   font-weight: 800;
 
   @media (min-width: 1024px) {
@@ -41,6 +36,7 @@ type Props = {
   serviceSectionTitle: string
   serviceSectionTitleColor?: string
   rootContrast?: boolean
+  serviceCardActionRef?: React.RefObject<HTMLDivElement> | null
 }
 
 const ServiceSection = ({
@@ -48,23 +44,18 @@ const ServiceSection = ({
   serviceSectionTitle = "Título da seção",
   serviceSectionTitleColor,
   rootContrast = false,
+  serviceCardActionRef = null,
 }: Props) => {
   const theme = useTheme()
 
   return (
     <ServiceSectionRoot contrast={rootContrast}>
-      <ServiceSectionTitle
-        titleColor={
-          serviceSectionTitleColor
-            ? serviceSectionTitleColor
-            : theme.palette.primary.main
-        }
-        titleFontFamily={theme.typography.fontFamily as string}
-      >
-        {serviceSectionTitle}
-      </ServiceSectionTitle>
+      <ServiceSectionTitle>{serviceSectionTitle}</ServiceSectionTitle>
 
-      <ServiceSlider services={services} />
+      <ServiceSlider
+        serviceCardActionRef={serviceCardActionRef}
+        services={services}
+      />
     </ServiceSectionRoot>
   )
 }

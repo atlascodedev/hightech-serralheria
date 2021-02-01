@@ -27,9 +27,13 @@ const CardActiveContainer = styled("div")<CardActiveProps>`
 
 type Props = {
   services: Array<any>
+  serviceCardActionRef?: React.RefObject<HTMLDivElement> | null
 }
 
-const ServiceSlider = ({ services = [] }: Props) => {
+const ServiceSlider = ({
+  services = [],
+  serviceCardActionRef = null,
+}: Props) => {
   const [serviceData, setServiceData] = React.useState([])
 
   return (
@@ -53,7 +57,7 @@ const ServiceSlider = ({ services = [] }: Props) => {
         <SwiperSlide>
           {({ isActive }: any | boolean) => (
             <CardActiveContainer active={isActive}>
-              <ServiceCard />
+              <ServiceCard serviceCardRef={serviceCardActionRef} />
             </CardActiveContainer>
           )}
         </SwiperSlide>

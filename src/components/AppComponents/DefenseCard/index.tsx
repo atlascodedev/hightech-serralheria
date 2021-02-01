@@ -1,4 +1,4 @@
-import { SvgIcon, SvgIconTypeMap, useTheme } from "@material-ui/core"
+import { SvgIcon, SvgIconTypeMap } from "@material-ui/core"
 import { OverridableComponent } from "@material-ui/core/OverridableComponent"
 import { Check, SvgIconComponent } from "@material-ui/icons"
 import React, { ReactElement } from "react"
@@ -30,18 +30,14 @@ const DefenseCardBase = styled("div")<DefenseCardBaseProps>`
   }
 `
 
-type DefenseCardIconContainerProps = {
-  backgroundColor: string
-}
-
-const DefenseCardIconContainer = styled("div")<DefenseCardIconContainerProps>`
+const DefenseCardIconContainer = styled("div")`
   border-radius: 50%;
   width: 61px;
   height: 61px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${props => props.theme.palette.primary.main};
   position: absolute;
   top: 0;
   transform: translate(-15px, -15px);
@@ -59,7 +55,6 @@ const DefenseCardIcon = styled("div")`
 
     @media (min-width: 1024px) {
       font-size: 45px;
-
     }
   }
 `
@@ -114,14 +109,10 @@ const DefenseCard: React.FC<DefenseCard> = ({
   cardHeight = "250px",
   cardWidth = "300px",
 }) => {
-  const theme = useTheme()
-
   return (
     <div>
       <DefenseCardBase width={cardWidth} height={cardHeight}>
-        <DefenseCardIconContainer
-          backgroundColor={theme.palette.primary.main as string}
-        >
+        <DefenseCardIconContainer>
           <DefenseCardIcon>
             <SvgIcon fontSize="inherit" className={"icon"} component={icon} />
           </DefenseCardIcon>

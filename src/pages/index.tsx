@@ -83,9 +83,13 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       sectionComponent: null,
       childComponent: (
         <div>
-          <ServiceSection services={[]} serviceSectionTitle={"Serralheria"} />
           <ServiceSection
-          services={[]}
+            serviceCardActionRef={contactRef}
+            services={[]}
+            serviceSectionTitle={"Serralheria"}
+          />
+          <ServiceSection
+            services={[]}
             rootContrast={true}
             serviceSectionTitle={"Segurança eletrônica"}
           />

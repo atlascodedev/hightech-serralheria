@@ -41,15 +41,3 @@ export const wrapRootElement = ({ element }) => <App root={element} />
 
 // Uncomment if you setup a loading screen to be displayed before initial client render on html.js located at src folder
 
-// export const onInitialClientRender = () => {
-//   window.scroll(0, 0)
-
-//   setTimeout(() => {
-//     document.getElementById("atlas-loader").style.opacity = "0"
-
-//     setTimeout(() => {
-//       document.getElementById("atlas-loader").style.display = "none"
-//       document.body.style.overflow = "initial"
-//     }, 500)
-//   }, 2000)
-// }

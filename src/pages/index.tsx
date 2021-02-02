@@ -114,6 +114,13 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       sectionComponent: null,
       childComponent: <ContactSection />,
     },
+    {
+      menuName: "Exemplo",
+      reference: contactRef,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: null,
+    },
   ]
 
   for (let i = 0; i < menu.length; i++) {

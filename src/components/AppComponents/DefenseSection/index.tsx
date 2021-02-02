@@ -4,10 +4,12 @@ import styled from "styled-components"
 import {
   AccountBalance,
   Assessment,
+  Build,
   Check,
   CreditCard,
   EmojiObjects,
   Facebook,
+  VerifiedUser,
 } from "@material-ui/icons"
 import { Fade, Slide, useMediaQuery, useTheme } from "@material-ui/core"
 import { Waypoint } from "react-waypoint"
@@ -73,9 +75,6 @@ const DefenseSection = (props: Props) => {
         onEnter={() => setDefenseAnimation(true)}
       />
       <DefenseSectionRoot fontFamily={theme.typography.fontFamily as string}>
-        {/* <DefenseSectionTitle fontFamily={theme.typography.fontFamily as string}>
-          Por que escolher a <span>Consultoria Especializa</span>?
-        </DefenseSectionTitle> */}
         <DefenseSectionContainer>
           <Slide
             in={defenseAnimation}
@@ -83,7 +82,7 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 750 }}
           >
             <div>
-              <DefenseCard icon={Assessment} />
+              <DefenseCard icon={Build} />
             </div>
           </Slide>
           <Slide
@@ -92,7 +91,7 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 950 }}
           >
             <div>
-              <DefenseCard icon={EmojiObjects} />
+              <DefenseCard icon={VerifiedUser} />
             </div>
           </Slide>
           <Slide

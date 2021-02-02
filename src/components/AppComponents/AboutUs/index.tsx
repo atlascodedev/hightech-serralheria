@@ -26,7 +26,7 @@ const AboutUsImageContainer = styled.div<AboutUsImageContainerProps>`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 50vh;
   width: 100%;
 
   @media (min-width: 1024px) {

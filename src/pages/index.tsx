@@ -11,7 +11,6 @@ import heroImgMobile from "../images/impact-image-mobile.webp"
 import AppLayout from "../layout"
 import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
-import CourseContactForm from "../components/AppComponents/ContactFormMain"
 import ContactFormMain from "../components/AppComponents/ContactForm"
 import ContactSection from "../components/AppComponents/ContactSection"
 

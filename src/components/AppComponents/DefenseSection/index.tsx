@@ -24,6 +24,7 @@ const DefenseSectionRoot = styled("div")<DefenseSectionRootProps>`
   height: 100%;
   text-align: center;
   overflow: hidden;
+  margin-top: 5px;
   font-family: ${props => props.fontFamily};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
 `
@@ -82,13 +83,7 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 750 }}
           >
             <div>
-              <DefenseCard
-                icon={Assessment}
-                text={
-                  "A Consultoria Especializa acredita em o que faz; empresas que trabalham junto com a Especializa obtém retornos claros e objetivos"
-                }
-                title={"Resultados"}
-              />
+              <DefenseCard icon={Assessment} />
             </div>
           </Slide>
           <Slide
@@ -97,13 +92,7 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 950 }}
           >
             <div>
-              <DefenseCard
-                icon={EmojiObjects}
-                text={
-                  "Através do trabalho realizado com diversas instituições educacionais, conseguimos analisar a situação por diversos ângulos e determinar o caminho certo para ajudar sua instituição atingir seus objetivos."
-                }
-                title={"Perspectiva"}
-              />
+              <DefenseCard icon={EmojiObjects} />
             </div>
           </Slide>
           <Slide
@@ -112,13 +101,7 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 1150 }}
           >
             <div>
-              <DefenseCard
-                icon={AccountBalance}
-                text={
-                  "A Consultoria Especializa auxiliará formar e/ou reforçar os alicerces da sua instituição, garantindo que seus funcionários e alunos consigam alcançar metas e obter sucesso duradouro."
-                }
-                title={"Estrutura"}
-              />
+              <DefenseCard icon={AccountBalance} />
             </div>
           </Slide>
         </DefenseSectionContainer>

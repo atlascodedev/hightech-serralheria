@@ -5,12 +5,12 @@ backend:
     create: "Create {{collection}} “{{slug}}” [skip ci]"
     update: "Update {{collection}} “{{slug}} [skip ci]”"
     delete: "Delete {{collection}} “{{slug}} [skip ci]”"
-    uploadMedia: "[skip ci] Upload “{{path}}”"
-    deleteMedia: "[skip ci] Delete “{{path}}”"
+    uploadMedia: "[skip ci] Upload “{{path}} [skip ci]”"
+    deleteMedia: "[skip ci] Delete “{{path}} [skip ci]”"
 
 media_folder: static/img
 public_folder: /img
-locale: en
+locale: pt
 display_url: "https://atlascode.dev"
 site_url: "https://atlascode.dev"
 logo_url: https://i.imgur.com/LOXhnE2.png

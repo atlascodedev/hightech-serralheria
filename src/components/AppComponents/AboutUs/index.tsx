@@ -31,6 +31,8 @@ const AboutUsImageContainer = styled.div<AboutUsImageContainerProps>`
 
   @media (min-width: 1024px) {
     background-image: ${props => `url(${props.img})`};
+
+    height: 100vh;
   }
 `
 

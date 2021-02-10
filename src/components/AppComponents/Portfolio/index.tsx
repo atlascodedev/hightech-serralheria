@@ -8,10 +8,10 @@ import SwiperCore, {
   Autoplay,
 } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { PortfolioItem, PortfolioItemList } from "../../../types"
 import "./slider.css"
 
-interface Props {
-  portfolioItems: Array<any>
+interface Props extends PortfolioItemList {
   portfolioSectionTitle: string
 }
 
@@ -53,50 +53,54 @@ const PortfolioSectionTitle = styled.div`
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
 const PortfolioSection = ({
-  portfolioItems = [],
+  portfolioList = [],
   portfolioSectionTitle = "Placeholder section title",
 }: Props) => {
   return (
-    <PortfolioSectionRoot>
-      <PortfolioSectionTitle>{portfolioSectionTitle}</PortfolioSectionTitle>
-      <Swiper
-        id="swiper-portfolio"
-        slidesPerView={1}
-        noSwiping
-        noSwipingClass={"no-swipe"}
-        autoplay={{
-          delay: 0,
-          waitForTransition: false,
-          disableOnInteraction: false,
-        }}
-        speed={6000}
-        loop={true}
-        breakpoints={{
-          1024: {
-            autoplay: {
+    <div>
+      {portfolioList.length ? (
+        <PortfolioSectionRoot>
+          <PortfolioSectionTitle>{portfolioSectionTitle}</PortfolioSectionTitle>
+          <Swiper
+            id="swiper-portfolio"
+            slidesPerView={1}
+            noSwiping
+            // noSwipingClass={"no-swipe"}
+            autoplay={{
               delay: 0,
+              waitForTransition: false,
               disableOnInteraction: false,
-            },
-            slidesPerView: 3,
-            speed: 3000,
-            loop: true,
-          },
-        }}
-      >
-        <SwiperSlide className={"no-swipe"}>
-          <PortfolioCardRoot img={"https://via.placeholder.com/350"} />
-        </SwiperSlide>
-        <SwiperSlide className={"no-swipe"}>
-          <PortfolioCardRoot img={"https://via.placeholder.com/350"} />
-        </SwiperSlide>
-        <SwiperSlide className={"no-swipe"}>
-          <PortfolioCardRoot img={"https://via.placeholder.com/350"} />
-        </SwiperSlide>
-        <SwiperSlide className={"no-swipe"}>
-          <PortfolioCardRoot img={"https://via.placeholder.com/350"} />
-        </SwiperSlide>
-      </Swiper>
-    </PortfolioSectionRoot>
+            }}
+            speed={6000}
+            loop={true}
+            breakpoints={{
+              1024: {
+                autoplay: {
+                  delay: 2000,
+                  waitForTransition: true,
+                  disableOnInteraction: false,
+                },
+                slidesPerView: portfolioList.length > 2 ? 3 : 1,
+                speed: 6000,
+                loop: true,
+              },
+            }}
+          >
+            {portfolioList.map(
+              (portfolioItem: PortfolioItem, index: number) => {
+                return (
+                  <SwiperSlide key={index} className={"no-swipe"}>
+                    <PortfolioCardRoot
+                      img={portfolioItem.portfolioItemPicture}
+                    />
+                  </SwiperSlide>
+                )
+              }
+            )}
+          </Swiper>
+        </PortfolioSectionRoot>
+      ) : null}
+    </div>
   )
 }
 

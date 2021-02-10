@@ -79,7 +79,7 @@ interface Props {
   serviceCardTitle?: string
   serviceCardText?: string
   serviceCardURL?: string
-  serviceCardCallToAction?: string
+  serviceCardCallToAction?: string | null
   serviceCardRef?: React.RefObject<HTMLDivElement> | null
 }
 
@@ -98,7 +98,9 @@ const ServiceCard = ({
         <ServiceCardBody>
           <ServiceCardTitle>{serviceCardTitle}</ServiceCardTitle>
           <ServiceCardText>{serviceCardText}</ServiceCardText>
-          {serviceCardURL == "" || serviceCardURL == "#" ? (
+          {/* {
+            serviceCardCallToAction !== null ? (
+               {serviceCardURL == "" || serviceCardURL == "#" ? (
             <Button
               onClick={() => scrollIntoViewHelper(serviceCardRef)}
               variant="contained"
@@ -113,6 +115,8 @@ const ServiceCard = ({
               </Button>
             </Link>
           )}
+            ) : null
+          } */}
         </ServiceCardBody>
       </ServiceCardBase>
     </Box>

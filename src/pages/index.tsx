@@ -13,6 +13,7 @@ import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
 import ContactFormMain from "../components/AppComponents/ContactForm"
 import ContactSection from "../components/AppComponents/ContactSection"
+import { PortfolioItem, PortfolioItemList, ServiceItem } from "../types"
 
 interface IndexProps {
   testMe: Array<string>
@@ -33,6 +34,59 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   const servicesRef = React.useRef<HTMLDivElement | null>(null)
   const projectsRef = React.useRef<HTMLDivElement | null>(null)
   const contactRef = React.useRef<HTMLDivElement | null>(null)
+
+  let portfolioListMockData: Array<PortfolioItem> = [
+    {
+      portfolioItemPicture: "https://via.placeholder.com/500",
+    },
+    {
+      portfolioItemPicture: "https://via.placeholder.com/500",
+    },
+    {
+      portfolioItemPicture: "https://via.placeholder.com/500",
+    },
+    {
+      portfolioItemPicture: "https://via.placeholder.com/500",
+    },
+  ]
+
+  let serviceListMockData: Array<ServiceItem> = [
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+    {
+      serviceItemTitle: "Service Title",
+      serviceItemDescription: "Service item description",
+      serviceItemPicture: "https://via.placeholder.com/750",
+    },
+  ]
 
   let menu: Array<MenuItem> = [
     {
@@ -85,15 +139,18 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         <div>
           <ServiceSection
             serviceCardActionRef={contactRef}
-            services={[]}
+            serviceList={serviceListMockData}
             serviceSectionTitle={"Serralheria"}
           />
           <ServiceSection
-            services={[]}
+            serviceList={serviceListMockData}
             rootContrast={true}
             serviceSectionTitle={"Segurança eletrônica"}
           />
-          <ServiceSection services={[]} serviceSectionTitle={"Elétrica"} />
+          <ServiceSection
+            serviceList={serviceListMockData}
+            serviceSectionTitle={"Elétrica"}
+          />
         </div>
       ),
     },
@@ -103,7 +160,10 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       itemDocumentId: null,
       sectionComponent: null,
       childComponent: (
-        <PortfolioSection portfolioSectionTitle="Nossos últimos serviços" />
+        <PortfolioSection
+          portfolioList={portfolioListMockData}
+          portfolioSectionTitle="Nossos últimos serviços"
+        />
       ),
     },
 
@@ -113,13 +173,6 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       itemDocumentId: null,
       sectionComponent: null,
       childComponent: <ContactSection />,
-    },
-    {
-      menuName: "Exemplo",
-      reference: contactRef,
-      itemDocumentId: null,
-      sectionComponent: null,
-      childComponent: null,
     },
   ]
 

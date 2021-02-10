@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "./slider.css"
 import ServiceCard from "../ServiceCard"
 import { graphql, useStaticQuery } from "gatsby"
+import { ServiceItem, ServiceItemList } from "../../../../types"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
@@ -25,13 +26,12 @@ const CardActiveContainer = styled("div")<CardActiveProps>`
   will-change: scale;
 `
 
-type Props = {
-  services: Array<any>
+interface Props extends ServiceItemList {
   serviceCardActionRef?: React.RefObject<HTMLDivElement> | null
 }
 
 const ServiceSlider = ({
-  services = [],
+  serviceList = [],
   serviceCardActionRef = null,
 }: Props) => {
   const [serviceData, setServiceData] = React.useState([])
@@ -54,41 +54,23 @@ const ServiceSlider = ({
           },
         }}
       >
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard serviceCardRef={serviceCardActionRef} />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
-        <SwiperSlide>
-          {({ isActive }: any | boolean) => (
-            <CardActiveContainer active={isActive}>
-              <ServiceCard />
-            </CardActiveContainer>
-          )}
-        </SwiperSlide>
+        {serviceList.map((serviceItem: ServiceItem, index: number) => {
+          return (
+            <SwiperSlide>
+              {({ isActive }: any | boolean) => (
+                <CardActiveContainer active={isActive}>
+                  <ServiceCard
+                    serviceCardImg={serviceItem.serviceItemPicture}
+                    serviceCardText={serviceItem.serviceItemDescription}
+                    serviceCardCallToAction={null}
+                    serviceCardTitle={serviceItem.serviceItemTitle}
+                    serviceCardRef={serviceCardActionRef}
+                  />
+                </CardActiveContainer>
+              )}
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
     </div>
   )

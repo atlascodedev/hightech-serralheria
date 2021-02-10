@@ -3,6 +3,7 @@ import ServiceCard from "./ServiceCard"
 import styled from "styled-components"
 import ServiceSlider from "./Slider"
 import { useTheme } from "@material-ui/core"
+import { ServiceItemList } from "../../../types"
 
 type ServiceSectionRootProps = {
   contrast: boolean
@@ -31,8 +32,7 @@ const ServiceSectionTitle = styled("div")`
   }
 `
 
-type Props = {
-  services: Array<any>
+interface Props extends ServiceItemList {
   serviceSectionTitle: string
   serviceSectionTitleColor?: string
   rootContrast?: boolean
@@ -40,7 +40,7 @@ type Props = {
 }
 
 const ServiceSection = ({
-  services = [],
+  serviceList = [],
   serviceSectionTitle = "Título da seção",
   serviceSectionTitleColor,
   rootContrast = false,
@@ -49,14 +49,18 @@ const ServiceSection = ({
   const theme = useTheme()
 
   return (
-    <ServiceSectionRoot contrast={rootContrast}>
-      <ServiceSectionTitle>{serviceSectionTitle}</ServiceSectionTitle>
+    <div>
+      {serviceList.length ? (
+        <ServiceSectionRoot contrast={rootContrast}>
+          <ServiceSectionTitle>{serviceSectionTitle}</ServiceSectionTitle>
 
-      <ServiceSlider
-        serviceCardActionRef={serviceCardActionRef}
-        services={services}
-      />
-    </ServiceSectionRoot>
+          <ServiceSlider
+            serviceCardActionRef={serviceCardActionRef}
+            serviceList={serviceList}
+          />
+        </ServiceSectionRoot>
+      ) : null}
+    </div>
   )
 }
 

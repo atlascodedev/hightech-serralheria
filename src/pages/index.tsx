@@ -14,6 +14,7 @@ import PortfolioSection from "../components/AppComponents/Portfolio"
 import ContactFormMain from "../components/AppComponents/ContactForm"
 import ContactSection from "../components/AppComponents/ContactSection"
 import { PortfolioItem, PortfolioItemList, ServiceItem } from "../types"
+import { graphql, useStaticQuery } from "gatsby"
 
 interface IndexProps {
   testMe: Array<string>
@@ -49,6 +50,25 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       portfolioItemPicture: "https://via.placeholder.com/500",
     },
   ]
+
+  const serralheriaData = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(
+        filter: { frontmatter: { contentType: { eq: "serralheria" } } }
+      ) {
+        edges {
+          node {
+            html
+            frontmatter {
+              title
+              contentType
+              description
+            }
+          }
+        }
+      }
+    }
+  `)
 
   let serviceListMockData: Array<ServiceItem> = [
     {

@@ -36,6 +36,12 @@ export interface ServiceGraphQuery {
           description: string
           contentType: string
           featuredImage: string
+
+          //
+          blogTitle: string
+          blogDate: string
+          blogFeaturedImage: string
+          blogPost: string
         }
       }
     }>

@@ -53,6 +53,10 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
               contentType
               description
               featuredImage
+              blogTitle
+              blogDate
+              blogFeaturedImage
+              blogPost
             }
           }
         }

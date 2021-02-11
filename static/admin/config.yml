@@ -108,23 +108,47 @@ collections:
     label: "Blog"
     folder: "src/cms_data/blog"
     create: true
-    slug: "{{slug}}"
+    slug: "{{fields.blogTitle}}"
     fields:
-      - { label: "Content Type", name: "contentType", widget: hidden, default: eletrica}
-      - {label: 'Template Key', name: 'templateKey', widget: hidden, default: 'Post'}
-      - {label: 'Título do post', name: 'blogTitle', widget: string}
-      - {label: 'Data da publicação', name: blogDate, widget: datetime}
-      - {label: 'Imagem principal', name: 'blogFeaturedImage', widget: image}
-      - {label: 'Post', name: 'blogPost', widget: markdown}
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: hidden,
+          default: eletrica,
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: hidden,
+          default: "Post",
+        }
+      - { label: "Título do post", name: "blogTitle", widget: string }
+      - { label: "Data da publicação", name: blogDate, widget: datetime }
+      - { label: "Imagem principal", name: "blogFeaturedImage", widget: image }
+      - { label: "Post", name: "blogPost", widget: markdown }
 
-  - name: 'portfolio'
+  - name: "portfolio"
     editor:
       preview: false
-    label: 'Portfólio'
-    folder: 'src/cms_data/portfolio'
+    label: "Portfólio"
+    folder: "src/cms_data/portfolio"
     create: true
-    slug:  '{{slug}}'
+    slug: "{{slug}}"
     fields:
-      - { label: 'Content Type', name: 'contentType', widget: hidden, default: 'portfolio'}
-      - { label: 'Template Key', name: "templateKey", widget: hidden, default: "ignore"}
-      - { label: 'Foto do serviço', name: 'portfolioItemPicture', widget: image}
+      - {
+          label: "Content Type",
+          name: "contentType",
+          widget: hidden,
+          default: "portfolio",
+        }
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: hidden,
+          default: "ignore",
+        }
+      - {
+          label: "Foto do serviço",
+          name: "portfolioItemPicture",
+          widget: image,
+        }

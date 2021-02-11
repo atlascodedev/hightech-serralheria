@@ -101,3 +101,18 @@ collections:
           widget: "image",
         }
       - { label: "Descrição do serviço", name: "description", widget: "string" }
+
+  - name: "blog"
+    editor:
+      preview: false
+    label: "Blog"
+    folder: "src/cms_data/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Content Type", name: "contentType", widget: hidden, default: eletrica}
+      - {label: 'Template Key', name: 'templateKey', widget: hidden, default: 'BlogPost'}
+      - {label: 'Título do post', name: 'blogTitle', widget: string}
+      - {label: 'Data da publicação', name: blogDate, widget: datetime}
+      - {label: 'Imagem principal', name: 'blogFeaturedImage', widget: image}
+      - {label: 'Post', name: 'blogPost', widget: markdown}

@@ -15,6 +15,10 @@ exports.createSchemaCustomization = ({ actions }) => {
         featuredImage: String
         body: String
         description: String
+        blogTitle: String
+        blogDate: String
+        blogFeaturedImage: String
+        blogPost: String
 
 
         phoneOne: String

@@ -32,16 +32,17 @@ export interface ServiceGraphQuery {
     edges: Array<{
       node: {
         frontmatter: {
+          // Service fields
           title: string
           description: string
           contentType: string
           featuredImage: string
 
-          //
+          // Blog fields
           blogTitle: string
           blogDate: string
           blogFeaturedImage: string
-          blogPost: string
+          body: string
         }
       }
     }>

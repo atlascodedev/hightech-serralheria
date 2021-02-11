@@ -14,6 +14,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         title: String
         featuredImage: String
         body: String
+        description: String
 
 
         phoneOne: String

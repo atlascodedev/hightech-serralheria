@@ -55,6 +55,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "cross-env ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
+    "cleanDev": "cross-env ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby clean && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

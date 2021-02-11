@@ -12,19 +12,29 @@ export interface ServiceItem {
   serviceItemTitle: string
 }
 
-export interface PostItem {
-  postTitle: string
-  postDate: string
-  postLink: string
-  postReadTime: string | number
+export interface BlogPost {
+  blogTitle: string
+  blogDate: string
+  blogFeaturedImage: string
+  html: string
+  blogURL: string
+  readingTime: string
 }
 
-export type PostItemList = {
-  postList: Array<PostItem>
+export type BlogPostList = {
+  blogPosts: Array<BlogPost>
 }
 
 export type ServiceItemList = {
   serviceList: Array<ServiceItem>
+}
+
+export type MenuItem = {
+  menuName: string | null
+  reference: React.RefObject<any> | null
+  itemDocumentId: string | null
+  sectionComponent?: any
+  childComponent?: any
 }
 
 export interface ServiceGraphQuery {
@@ -42,7 +52,10 @@ export interface ServiceGraphQuery {
           blogTitle: string
           blogDate: string
           blogFeaturedImage: string
-          body: string
+        }
+        html: string
+        fields: {
+          slug: string
         }
       }
     }>

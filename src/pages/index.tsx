@@ -1,4 +1,3 @@
-import { MenuItem } from "@material-ui/core"
 import React from "react"
 import AboutUs from "../components/AppComponents/AboutUs"
 import DefenseSection from "../components/AppComponents/DefenseSection"
@@ -11,29 +10,15 @@ import heroImgMobile from "../images/impact-image-mobile.webp"
 import AppLayout from "../layout"
 import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
-import ContactFormMain from "../components/AppComponents/ContactForm"
 import ContactSection from "../components/AppComponents/ContactSection"
-import {
-  PortfolioItem,
-  PortfolioItemList,
-  ServiceItem,
-  ServiceGraphQuery,
-} from "../types"
+import { ServiceItem, ServiceGraphQuery, BlogPost, MenuItem } from "../types"
 import { graphql, useStaticQuery } from "gatsby"
-import { serviceListMockData, portfolioListMockData } from "../mock_data"
+import { portfolioListMockData } from "../mock_data"
 import Posts from "../components/AppComponents/Posts"
 
 interface IndexProps {
   testMe: Array<string>
   onceAgain: boolean
-}
-
-export type MenuItem = {
-  menuName: string | null
-  reference: React.RefObject<any> | null
-  itemDocumentId: string | null
-  sectionComponent?: any
-  childComponent?: any
 }
 
 const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
@@ -56,7 +41,11 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
               blogTitle
               blogDate
               blogFeaturedImage
-              blogPost
+              body
+            }
+            html
+            fields {
+              slug
             }
           }
         }
@@ -80,10 +69,37 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     })
   }
 
+  const avgReadingSpeedByCharacterNum = (string: string) => {
+    let avgTime = (string.length / 750).toFixed(0)
+
+    return avgTime.toString()
+  }
+
+  const filterBlogPosts = (
+    data: ServiceGraphQuery,
+    array: Array<BlogPost>,
+    contentFilter: string
+  ) => {
+    data.allMarkdownRemark.edges.forEach(value => {
+      if (value.node.frontmatter.contentType === contentFilter) {
+        array.push({
+          blogTitle: value.node.frontmatter.blogTitle,
+          blogDate: value.node.frontmatter.blogDate,
+          blogFeaturedImage: value.node.frontmatter.blogFeaturedImage,
+          html: value.node.html,
+          blogURL: value.node.fields.slug,
+          readingTime: avgReadingSpeedByCharacterNum(value.node.html),
+        })
+      }
+    })
+  }
+
+  let blogPosts: Array<BlogPost> = []
   let serviceSerralheria: Array<ServiceItem> = []
   let serviceEletrica: Array<ServiceItem> = []
   let serviceSegurancaEletronica: Array<ServiceItem> = []
 
+  filterBlogPosts(servicesData, blogPosts, "blog")
   filterContentType(servicesData, serviceSerralheria, "serralheria")
   filterContentType(servicesData, serviceEletrica, "eletrica")
   filterContentType(
@@ -92,7 +108,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     "segurancaEletronica"
   )
 
-  // console.log(serviceSerralheria)
+  console.log(blogPosts)
   // console.log(serviceEletrica)
   // console.log(serviceSegurancaEletronica)
 
@@ -122,7 +138,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: null,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: <DefenseSection></DefenseSection>,
+      childComponent: <DefenseSection ></DefenseSection>,
     },
 
     {
@@ -167,7 +183,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: null,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: <Posts></Posts>,
+      childComponent: <Posts blogPosts={blogPosts}></Posts>,
     },
 
     {

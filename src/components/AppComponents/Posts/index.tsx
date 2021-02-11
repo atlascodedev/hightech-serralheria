@@ -1,8 +1,9 @@
 import React from "react"
-import { PostItemList } from "../../../types"
+import { BlogPost, BlogPostList } from "../../../types"
 import styled from "styled-components"
 import { Button, Fade, SvgIcon } from "@material-ui/core"
 import { AccessTime } from "@material-ui/icons"
+import { Link } from "gatsby"
 
 const PostListRoot = styled.div`
   padding-top: 5vh;
@@ -44,11 +45,19 @@ const PostCardContainer = styled.div`
   font-family: ${props => props.theme.typography.fontFamily};
 `
 
-const PostCard = styled.div`
+interface PostCardProps {
+  img: string
+}
+
+const PostCard = styled.div<PostCardProps>`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+  background-image: ${props => `url(${props.img})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
   width: 320px;
   height: 228px;
@@ -128,24 +137,39 @@ const PostAuthorIconContainer = styled.div`
   }
 `
 
-interface PostCardMainProps {}
+interface PostCardMainProps {
+  readTime: string
+  title: string
+  date: string
+  url: string
+  image: string
+}
 
-const PostCardMain = (props: PostCardMainProps) => {
+const PostCardMain = ({
+  date = "10 de janeiro de 2020",
+  readTime = "2",
+  title = "Placeholder post title",
+  url = "#",
+  image = "https://via.placeholder.com/150",
+}: PostCardMainProps) => {
   return (
     <div>
       <PostCardAncientRoot>
         <PostCardReadTimeContainer>
           <SvgIcon component={AccessTime} />
-          <div className="timer">10 minutos de leitura</div>
+          <div className="timer">
+            {readTime} {parseInt(readTime) <= 1 ? "minuto" : "minutos"} de
+            leitura
+          </div>
         </PostCardReadTimeContainer>
 
         <PostCardContainer>
-          <PostCard />
+          <Link to={url}>
+            <PostCard img={image} />
+          </Link>
         </PostCardContainer>
 
-        <PostTitle>
-          Ferramentas para melhorar as imagens do seu negócio
-        </PostTitle>
+        <PostTitle>{title}</PostTitle>
 
         <PostAuthorContainer>
           <PostAuthorIconContainer>
@@ -156,7 +180,9 @@ const PostCardMain = (props: PostCardMainProps) => {
 
           <div className="posterData">
             <div className="authorName">HighTech Serralheria</div>
-            <div className="postDate">10 de janeiro de 2021</div>
+            <div className="postDate">
+              {new Date(date).toLocaleDateString("pt-br")}
+            </div>
           </div>
         </PostAuthorContainer>
       </PostCardAncientRoot>
@@ -164,19 +190,19 @@ const PostCardMain = (props: PostCardMainProps) => {
   )
 }
 
-interface Props extends PostItemList {}
+interface Props extends BlogPostList {}
 
-const Posts = ({
-  postList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "h"],
-}: Props) => {
-  const [visiblePostList, setVisiblePostList] = React.useState<Array<any>>([])
-  const [postListState, setPostList] = React.useState<Array<any>>([])
+const Posts = ({ blogPosts = [] }: Props) => {
+  const [visiblePostList, setVisiblePostList] = React.useState<Array<BlogPost>>(
+    []
+  )
+  const [postListState, setPostList] = React.useState<Array<BlogPost>>([])
 
   React.useEffect(() => {
-    let localPostList = postList
+    let localPostList = blogPosts
     let firstThree = []
 
-    if (postList.length > 3) {
+    if (blogPosts.length > 3) {
       for (let i = 0; i < 3; i++) {
         const element = localPostList[i]
 
@@ -214,7 +240,13 @@ const Posts = ({
             return (
               <Fade key={index} in={true} timeout={{ enter: 750 }}>
                 <div>
-                  <PostCardMain />
+                  <PostCardMain
+                    date={value.blogDate}
+                    image={value.blogFeaturedImage}
+                    readTime={value.readingTime}
+                    title={value.blogTitle}
+                    url={value.blogURL}
+                  />
                 </div>
               </Fade>
             )

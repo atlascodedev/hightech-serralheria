@@ -82,7 +82,13 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 750 }}
           >
             <div>
-              <DefenseCard icon={Build} />
+              <DefenseCard
+                text={
+                  " Somos especialistas em instalação e manutenção de objetos de ferro, vidro, aço, alumínio e demais metais."
+                }
+                title={"Serralheria"}
+                icon={Build}
+              />
             </div>
           </Slide>
           <Slide
@@ -91,7 +97,13 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 950 }}
           >
             <div>
-              <DefenseCard icon={VerifiedUser} />
+              <DefenseCard
+                title="Segurança"
+                text={
+                  "Sinta-se confortável e seguro na sua casa ou trabalho com os nossos serviços especializados  em segurança eletrônica."
+                }
+                icon={VerifiedUser}
+              />
             </div>
           </Slide>
           <Slide
@@ -100,7 +112,13 @@ const DefenseSection = (props: Props) => {
             timeout={{ enter: 1150 }}
           >
             <div>
-              <DefenseCard icon={AccountBalance} />
+              <DefenseCard
+                title="Elétrica"
+                text={
+                  "Tudo o que você precisa para a sua rede elétrica residencial empresarial ou industrial"
+                }
+                icon={AccountBalance}
+              />
             </div>
           </Slide>
         </DefenseSectionContainer>

@@ -4,7 +4,7 @@ import Footer from "../components/AppComponents/Footer"
 import InfoSection from "../components/AppComponents/InfoSection"
 import Navbar from "../components/AppComponents/Navbar"
 import logo from "../images/high-tech-logo-svg.svg"
-import { MenuItem } from "../pages"
+import { MenuItem } from "../types"
 
 type AppLayoutProps = {
   children: React.ReactNode

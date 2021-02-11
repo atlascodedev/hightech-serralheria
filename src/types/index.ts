@@ -15,3 +15,18 @@ export interface ServiceItem {
 export type ServiceItemList = {
   serviceList: Array<ServiceItem>
 }
+
+export interface ServiceGraphQuery {
+  allMarkdownRemark: {
+    edges: Array<{
+      node: {
+        frontmatter: {
+          title: string
+          description: string
+          contentType: string
+          featuredImage: string
+        }
+      }
+    }>
+  }
+}

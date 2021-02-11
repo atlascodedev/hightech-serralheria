@@ -13,7 +13,12 @@ import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
 import ContactFormMain from "../components/AppComponents/ContactForm"
 import ContactSection from "../components/AppComponents/ContactSection"
-import { PortfolioItem, PortfolioItemList, ServiceItem } from "../types"
+import {
+  PortfolioItem,
+  PortfolioItemList,
+  ServiceItem,
+  ServiceGraphQuery,
+} from "../types"
 import { graphql, useStaticQuery } from "gatsby"
 
 interface IndexProps {
@@ -51,24 +56,52 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     },
   ]
 
-  const serralheriaData = useStaticQuery(graphql`
+  const servicesData: ServiceGraphQuery = useStaticQuery(graphql`
     {
-      allMarkdownRemark(
-        filter: { frontmatter: { contentType: { eq: "serralheria" } } }
-      ) {
+      allMarkdownRemark {
         edges {
           node {
-            html
             frontmatter {
               title
               contentType
               description
+              featuredImage
             }
           }
         }
       }
     }
   `)
+
+  const makeServiceArray = (
+    data: ServiceGraphQuery,
+    array: Array<ServiceItem>,
+    contentFilter: string
+  ) => {
+    data.allMarkdownRemark.edges.forEach(value => {
+      if (value.node.frontmatter.contentType === contentFilter) {
+        array.push({
+          serviceItemDescription: value.node.frontmatter.description,
+          serviceItemPicture: value.node.frontmatter.featuredImage,
+          serviceItemTitle: value.node.frontmatter.title,
+        })
+      }
+    })
+  }
+
+  let serviceSerralheria: Array<ServiceItem> = []
+  let serviceEletrica: Array<ServiceItem> = []
+  let serviceSegurancaEletronica: Array<ServiceItem> = []
+
+  makeServiceArray(servicesData, serviceSerralheria, "serralheria")
+  makeServiceArray(servicesData, serviceEletrica, "eletrica")
+  makeServiceArray(
+    servicesData,
+    serviceSegurancaEletronica,
+    "segurancaEletronica"
+  )
+
+  console.log(serviceSerralheria)
 
   let serviceListMockData: Array<ServiceItem> = [
     {
@@ -159,7 +192,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         <div>
           <ServiceSection
             serviceCardActionRef={contactRef}
-            serviceList={serviceListMockData}
+            serviceList={serviceSerralheria}
             serviceSectionTitle={"Serralheria"}
           />
           <ServiceSection
@@ -211,8 +244,6 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       </div>
     )
   }
-
-  console.log(menu)
 
   return (
     <AppLayout menu={menu}>

@@ -56,7 +56,7 @@ const ServiceSlider = ({
       >
         {serviceList.map((serviceItem: ServiceItem, index: number) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               {({ isActive }: any | boolean) => (
                 <CardActiveContainer active={isActive}>
                   <ServiceCard

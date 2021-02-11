@@ -15,6 +15,14 @@ module.exports = {
     },
 
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "cms_data",
+        path: `${__dirname}/src/cms_data/`,
+      },
+    },
+
+    {
       resolve: "gatsby-plugin-material-ui",
       options: {
         stylesProvider: {

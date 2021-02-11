@@ -44,7 +44,7 @@ collections:
           name: "featuredImage",
           widget: "image",
         }
-      - { label: "Descrição do serviço", name: "body", widget: "text" }
+      - { label: "Descrição do serviço", name: "description", widget: "string" }
 
   - name: "segurancaEletronica"
     editor:
@@ -72,7 +72,7 @@ collections:
           name: "featuredImage",
           widget: "image",
         }
-      - { label: "Descrição do serviço", name: "body", widget: "text" }
+      - { label: "Descrição do serviço", name: "description", widget: "string" }
 
   - name: "eletrica"
     editor:
@@ -100,4 +100,4 @@ collections:
           name: "featuredImage",
           widget: "image",
         }
-      - { label: "Descrição do serviço", name: "body", widget: "text" }
+      - { label: "Descrição do serviço", name: "description", widget: "string" }

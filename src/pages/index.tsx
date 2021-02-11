@@ -20,6 +20,8 @@ import {
   ServiceGraphQuery,
 } from "../types"
 import { graphql, useStaticQuery } from "gatsby"
+import { serviceListMockData, portfolioListMockData } from "../mock_data"
+import Posts from "../components/AppComponents/Posts"
 
 interface IndexProps {
   testMe: Array<string>
@@ -41,21 +43,6 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   const projectsRef = React.useRef<HTMLDivElement | null>(null)
   const contactRef = React.useRef<HTMLDivElement | null>(null)
 
-  let portfolioListMockData: Array<PortfolioItem> = [
-    {
-      portfolioItemPicture: "https://via.placeholder.com/500",
-    },
-    {
-      portfolioItemPicture: "https://via.placeholder.com/500",
-    },
-    {
-      portfolioItemPicture: "https://via.placeholder.com/500",
-    },
-    {
-      portfolioItemPicture: "https://via.placeholder.com/500",
-    },
-  ]
-
   const servicesData: ServiceGraphQuery = useStaticQuery(graphql`
     {
       allMarkdownRemark {
@@ -73,7 +60,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     }
   `)
 
-  const makeServiceArray = (
+  const filterContentType = (
     data: ServiceGraphQuery,
     array: Array<ServiceItem>,
     contentFilter: string
@@ -93,53 +80,17 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   let serviceEletrica: Array<ServiceItem> = []
   let serviceSegurancaEletronica: Array<ServiceItem> = []
 
-  makeServiceArray(servicesData, serviceSerralheria, "serralheria")
-  makeServiceArray(servicesData, serviceEletrica, "eletrica")
-  makeServiceArray(
+  filterContentType(servicesData, serviceSerralheria, "serralheria")
+  filterContentType(servicesData, serviceEletrica, "eletrica")
+  filterContentType(
     servicesData,
     serviceSegurancaEletronica,
     "segurancaEletronica"
   )
 
-  console.log(serviceSerralheria)
-
-  let serviceListMockData: Array<ServiceItem> = [
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-    {
-      serviceItemTitle: "Service Title",
-      serviceItemDescription: "Service item description",
-      serviceItemPicture: "https://via.placeholder.com/750",
-    },
-  ]
+  // console.log(serviceSerralheria)
+  // console.log(serviceEletrica)
+  // console.log(serviceSegurancaEletronica)
 
   let menu: Array<MenuItem> = [
     {
@@ -196,17 +147,25 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
             serviceSectionTitle={"Serralheria"}
           />
           <ServiceSection
-            serviceList={serviceListMockData}
+            serviceList={serviceSegurancaEletronica}
             rootContrast={true}
             serviceSectionTitle={"Segurança eletrônica"}
           />
           <ServiceSection
-            serviceList={serviceListMockData}
+            serviceList={serviceEletrica}
             serviceSectionTitle={"Elétrica"}
           />
         </div>
       ),
     },
+    {
+      menuName: null,
+      reference: null,
+      itemDocumentId: null,
+      sectionComponent: null,
+      childComponent: <Posts></Posts>,
+    },
+
     {
       menuName: "Últimos projetos",
       reference: projectsRef,

@@ -30,6 +30,9 @@ exports.createSchemaCustomization = ({ actions }) => {
         whatsAppNum: String
         whatsAppMessage: String
         address: String
+
+
+        portfolioItemPicture: String
         
     }
   

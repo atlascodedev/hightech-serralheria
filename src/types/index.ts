@@ -12,6 +12,17 @@ export interface ServiceItem {
   serviceItemTitle: string
 }
 
+export interface PostItem {
+  postTitle: string
+  postDate: string
+  postLink: string
+  postReadTime: string | number
+}
+
+export type PostItemList = {
+  postList: Array<PostItem>
+}
+
 export type ServiceItemList = {
   serviceList: Array<ServiceItem>
 }

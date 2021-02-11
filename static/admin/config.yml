@@ -111,8 +111,20 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Content Type", name: "contentType", widget: hidden, default: eletrica}
-      - {label: 'Template Key', name: 'templateKey', widget: hidden, default: 'BlogPost'}
+      - {label: 'Template Key', name: 'templateKey', widget: hidden, default: 'Post'}
       - {label: 'Título do post', name: 'blogTitle', widget: string}
       - {label: 'Data da publicação', name: blogDate, widget: datetime}
       - {label: 'Imagem principal', name: 'blogFeaturedImage', widget: image}
       - {label: 'Post', name: 'blogPost', widget: markdown}
+
+  - name: 'portfolio'
+    editor:
+      preview: false
+    label: 'Portfólio'
+    folder: 'src/cms_data/portfolio'
+    create: true
+    slug:  '{{slug}}'
+    fields:
+      - { label: 'Content Type', name: 'contentType', widget: hidden, default: 'portfolio'}
+      - { label: 'Template Key', name: "templateKey", widget: hidden, default: "ignore"}
+      - { label: 'Foto do serviço', name: 'portfolioItemPicture', widget: image}

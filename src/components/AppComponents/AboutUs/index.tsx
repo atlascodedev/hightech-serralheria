@@ -51,6 +51,10 @@ const AboutUsTextContainer = styled.div`
 `
 
 const AboutUsMainText = styled.div`
+
+  margin-left: 15px;
+  margin-right: 15px;
+
   & > span {
     color: #333;
     font-weight: 700;

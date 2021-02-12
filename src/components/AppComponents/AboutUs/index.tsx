@@ -1,6 +1,8 @@
 import { useTheme } from "@material-ui/core"
 import React from "react"
+import { Waypoint } from "react-waypoint"
 import styled from "styled-components"
+import returnHome from "../../../helper/returnHome"
 
 const AboutUsRootContainer = styled.div`
   font-family: ${props => props.theme.typography.fontFamily};
@@ -42,6 +44,7 @@ const AboutUsTextContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-bottom: 35px;
 
   @media (min-width: 1024px) {
     padding-left: 3vh;
@@ -51,7 +54,6 @@ const AboutUsTextContainer = styled.div`
 `
 
 const AboutUsMainText = styled.div`
-
   margin-left: 15px;
   margin-right: 15px;
 
@@ -110,33 +112,50 @@ const AboutUs = ({
 }: Props) => {
   const theme = useTheme()
 
+  const [numOfClients, setNumOfClients] = React.useState<number>(0)
+
+  const changeNumOfClients = () => {
+    if (numOfClients < 500) {
+      for (let i = 0; i < 500; i++) {
+        setTimeout(() => {
+          setNumOfClients(prevState => prevState + 1)
+        }, 150 - (1 * i))
+      }
+    } else {
+      returnHome
+    }
+  }
+
   return (
-    <AboutUsRootContainer>
-      <AboutUsGridContainer>
-        <AboutUsImageContainer
-          imgMobile={backgroundImageMobile}
-          img={backgroundImage}
-        ></AboutUsImageContainer>
+    <div>
+      <Waypoint bottomOffset={500} onEnter={() => changeNumOfClients()}  />
+      <AboutUsRootContainer>
+        <AboutUsGridContainer>
+          <AboutUsImageContainer
+            imgMobile={backgroundImageMobile}
+            img={backgroundImage}
+          ></AboutUsImageContainer>
 
-        <AboutUsTextContainer>
-          <AboutUsMainText>
-            A <span>High Tech Serralheria</span> está presente há mais de 5 anos
-            no mercado, prestando serviços com excelência para residencias,
-            empresas e construtoras.
-            <div className="secondParagraph">
-              O nosso foco é a solução dos seus problemas, com materiais de
-              qualidade e atendimento diferenciado, sendo o nosso objetivo a
-              entrega do melhor serviço possível.
-            </div>
-          </AboutUsMainText>
+          <AboutUsTextContainer>
+            <AboutUsMainText>
+              A <span>High Tech Serralheria</span> está presente há mais de 5
+              anos no mercado, prestando serviços com excelência para
+              residencias, empresas e construtoras.
+              <div className="secondParagraph">
+                O nosso foco é a solução dos seus problemas, com materiais de
+                qualidade e atendimento diferenciado, sendo o nosso objetivo a
+                entrega do melhor serviço possível.
+              </div>
+            </AboutUsMainText>
 
-          <AboutUsCounterContainer>
-            <AboutUsCounter>+ de 500</AboutUsCounter>
-            <AboutUsCounterText>clientes satisfeitos</AboutUsCounterText>
-          </AboutUsCounterContainer>
-        </AboutUsTextContainer>
-      </AboutUsGridContainer>
-    </AboutUsRootContainer>
+            <AboutUsCounterContainer>
+              <AboutUsCounter>+ de {numOfClients.toString()}</AboutUsCounter>
+              <AboutUsCounterText>clientes satisfeitos</AboutUsCounterText>
+            </AboutUsCounterContainer>
+          </AboutUsTextContainer>
+        </AboutUsGridContainer>
+      </AboutUsRootContainer>
+    </div>
   )
 }
 

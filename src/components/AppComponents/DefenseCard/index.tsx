@@ -16,6 +16,7 @@ const DefenseCardBase = styled("div")<DefenseCardBaseProps>`
   width: ${props =>
     typeof props.width == "number" ? props.width + "px" : props.width};
 
+  font-family: ${props => props.theme.typography.fontFamily};
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 35px;
@@ -71,7 +72,7 @@ const DefenseCardTitle = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 26px;
   color: #333;
   font-weight: 700;
   padding-top: 5px;
@@ -91,7 +92,11 @@ const DefenseCardText = styled("div")`
   padding-right: 35px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-size: 12px;
+  font-size: 16px;
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
 `
 
 interface DefenseCard {

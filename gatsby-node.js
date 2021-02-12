@@ -60,13 +60,13 @@ exports.onCreateNode = async ({
 }) => {
   const { createNodeField, createNode } = actions
 
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === `MarkdownRemark`) {
     const pathValue = createFilePath({ node, getNode })
 
     createNodeField({
-      name: "slug",
+      name: `slug`,
       node,
-      pathValue,
+      value: pathValue,
     })
   }
 }

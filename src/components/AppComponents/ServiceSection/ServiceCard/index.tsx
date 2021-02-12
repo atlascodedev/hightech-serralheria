@@ -18,6 +18,7 @@ type ServiceCardImageProps = {
 }
 
 const ServiceCardImage = styled("div")<ServiceCardImageProps>`
+  font-family: ${props => props.theme.typography.fontFamily};
   width: 310px;
   height: 190px;
   background-image: ${props => `url(${props.img})`};
@@ -61,9 +62,8 @@ const ServiceCardBody = styled("div")`
 
 const ServiceCardTitle = styled("div")`
   text-align: center;
-  font-family: "Suez One";
   font-weight: 700;
-  font-size: 14px;
+  font-size: 22px;
   margin-bottom: 15px;
   margin-top: 15px;
   padding-top: 35px;

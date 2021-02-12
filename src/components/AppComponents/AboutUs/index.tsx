@@ -119,7 +119,7 @@ const AboutUs = ({
       for (let i = 0; i < 500; i++) {
         setTimeout(() => {
           setNumOfClients(prevState => prevState + 1)
-        }, 150 - (1 * i))
+        }, 500 -  i)
       }
     } else {
       returnHome
@@ -128,7 +128,7 @@ const AboutUs = ({
 
   return (
     <div>
-      <Waypoint bottomOffset={500} onEnter={() => changeNumOfClients()}  />
+      <Waypoint bottomOffset={700} onEnter={() => changeNumOfClients()} />
       <AboutUsRootContainer>
         <AboutUsGridContainer>
           <AboutUsImageContainer

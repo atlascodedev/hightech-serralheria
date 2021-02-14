@@ -5,6 +5,7 @@ import InfoSection from "../components/AppComponents/InfoSection"
 import Navbar from "../components/AppComponents/Navbar"
 import logo from "../images/high-tech-logo-svg.svg"
 import { MenuItem } from "../types"
+import "../css/global.module.css"
 
 type AppLayoutProps = {
   children: React.ReactNode

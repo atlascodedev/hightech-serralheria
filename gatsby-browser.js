@@ -1,7 +1,10 @@
 import React from "react"
 import { CssBaseline, MuiThemeProvider } from "@material-ui/core"
 import { theme, styledTheme } from "./src/theme"
-import { ThemeProvider as StyledThemeProvider } from "styled-components"
+import {
+  createGlobalStyle,
+  ThemeProvider as StyledThemeProvider,
+} from "styled-components"
 
 import "@fontsource/barlow"
 import "@fontsource/barlow/400.css"
@@ -39,6 +42,8 @@ export const onInitialClientRender = () => {
 
   setTimeout(() => {
     document.getElementById("atlas-loader").style.opacity = "0"
+
+    document.body.style.textRendering = "optimizeLegibility"
 
     setTimeout(() => {
       document.getElementById("atlas-loader").style.display = "none"

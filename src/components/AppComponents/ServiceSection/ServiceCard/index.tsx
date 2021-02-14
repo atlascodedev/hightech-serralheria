@@ -18,7 +18,6 @@ type ServiceCardImageProps = {
 }
 
 const ServiceCardImage = styled("div")<ServiceCardImageProps>`
-  font-family: ${props => props.theme.typography.fontFamily};
   width: 310px;
   height: 190px;
   background-image: ${props => `url(${props.img})`};
@@ -34,6 +33,7 @@ const ServiceCardImage = styled("div")<ServiceCardImageProps>`
 `
 
 const ServiceCardBody = styled("div")`
+  font-family: ${props => props.theme.typography.fontFamily};
   width: 310px;
   min-height: 170px;
   height: auto;
@@ -63,15 +63,23 @@ const ServiceCardBody = styled("div")`
 const ServiceCardTitle = styled("div")`
   text-align: center;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 15px;
   margin-top: 15px;
   padding-top: 35px;
+
+  @media (min-width: 1024px) {
+    font-size: 26px;
+  }
 `
 
 const ServiceCardText = styled("div")`
   font-size: 10px;
   padding: 20px;
+
+  @media (min-width: 1024px) {
+    font-size: 14px;
+  }
 `
 
 interface Props {

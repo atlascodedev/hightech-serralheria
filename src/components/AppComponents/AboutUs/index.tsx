@@ -1,8 +1,8 @@
 import { useTheme } from "@material-ui/core"
+import { animate } from "framer-motion"
 import React from "react"
 import { Waypoint } from "react-waypoint"
 import styled from "styled-components"
-import returnHome from "../../../helper/returnHome"
 
 const AboutUsRootContainer = styled.div`
   font-family: ${props => props.theme.typography.fontFamily};
@@ -110,25 +110,31 @@ const AboutUs = ({
   backgroundImage = "https://via.placeholder.com/1500",
   backgroundImageMobile = "https://via.placeholder.com/450",
 }: Props) => {
-  const theme = useTheme()
-
   const [numOfClients, setNumOfClients] = React.useState<number>(0)
+  const [animationShowed, setAnimationShowed] = React.useState<boolean>(false)
 
-  const changeNumOfClients = () => {
+  const changeNumOfClientsWithMotion = () => {
+    setAnimationShowed(true)
+
     if (numOfClients < 500) {
-      for (let i = 0; i < 500; i++) {
-        setTimeout(() => {
-          setNumOfClients(prevState => prevState + 1)
-        }, 500 -  i)
-      }
+      const controls = animate(numOfClients, 500, {
+        duration: 6,
+        ease: "easeInOut",
+        onUpdate(value) {
+          setNumOfClients(parseInt(value.toFixed(0)))
+        },
+      })
     } else {
-      returnHome
+      return
     }
   }
 
   return (
     <div>
-      <Waypoint bottomOffset={700} onEnter={() => changeNumOfClients()} />
+      <Waypoint
+        bottomOffset={600}
+        onEnter={() => changeNumOfClientsWithMotion()}
+      />
       <AboutUsRootContainer>
         <AboutUsGridContainer>
           <AboutUsImageContainer

@@ -9,6 +9,7 @@ import SwiperCore, {
 } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { PortfolioItem, PortfolioItemList } from "../../../types"
+import ShowPictureBetter from "../ShowBetterPicture"
 import "./slider.css"
 
 interface Props extends PortfolioItemList {
@@ -56,8 +57,23 @@ const PortfolioSection = ({
   portfolioList = [],
   portfolioSectionTitle = "Placeholder section title",
 }: Props) => {
+  const [showPicture, setShowPicture] = React.useState<boolean>(false)
+  const [activePicture, setActivePicture] = React.useState<string>("")
+
+  const showSliderPicture = (src: string) => {
+    setShowPicture(true)
+    setActivePicture(src)
+  }
+
+  console.log(showPicture)
+
   return (
     <div>
+      <ShowPictureBetter
+        open={showPicture}
+        closeFunc={() => setShowPicture(false)}
+        imageSrc={activePicture}
+      />
       {portfolioList.length ? (
         <PortfolioSectionRoot>
           <PortfolioSectionTitle>{portfolioSectionTitle}</PortfolioSectionTitle>
@@ -89,7 +105,14 @@ const PortfolioSection = ({
             {portfolioList.map(
               (portfolioItem: PortfolioItem, index: number) => {
                 return (
-                  <SwiperSlide key={index} className={"no-swipe"}>
+                  <SwiperSlide
+                    style={{ cursor: "pointer" }}
+                    onClick={() =>
+                      showSliderPicture(portfolioItem.portfolioItemPicture)
+                    }
+                    key={index}
+                    className={"no-swipe"}
+                  >
                     <PortfolioCardRoot
                       img={portfolioItem.portfolioItemPicture}
                     />

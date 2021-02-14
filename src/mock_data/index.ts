@@ -40,13 +40,13 @@ export let serviceListMockData: Array<ServiceItem> = [
 
 export let portfolioListMockData: Array<PortfolioItem> = [
   {
-    portfolioItemPicture: "https://via.placeholder.com/500",
+    portfolioItemPicture: "https://via.placeholder.com/750",
   },
   {
-    portfolioItemPicture: "https://via.placeholder.com/500",
+    portfolioItemPicture: "https://via.placeholder.com/350",
   },
   {
-    portfolioItemPicture: "https://via.placeholder.com/500",
+    portfolioItemPicture: "https://via.placeholder.com/400",
   },
   {
     portfolioItemPicture: "https://via.placeholder.com/500",

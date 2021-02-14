@@ -39,6 +39,7 @@
     "react-helmet": "^6.1.0",
     "react-input-mask": "^2.0.4",
     "react-lazyload": "^3.1.0",
+    "react-scrollbars-custom": "^4.0.25",
     "react-waypoint": "^9.0.3",
     "styled-components": "^5.2.1",
     "swiper": "^6.4.9",

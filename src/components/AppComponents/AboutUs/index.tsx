@@ -118,7 +118,7 @@ const AboutUs = ({
 
     if (numOfClients < 500) {
       const controls = animate(numOfClients, 500, {
-        duration: 6,
+        duration: 3,
         ease: "easeInOut",
         onUpdate(value) {
           setNumOfClients(parseInt(value.toFixed(0)))

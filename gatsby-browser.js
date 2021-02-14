@@ -13,6 +13,7 @@ import "@fontsource/barlow/600.css"
 import "@fontsource/barlow/700.css"
 import "@fontsource/barlow/800.css"
 import "@fontsource/barlow/900.css"
+import Scrollbar from "react-scrollbars-custom"
 
 require("swiper/swiper.min.css")
 require("swiper/components/navigation/navigation.min.css")
@@ -25,10 +26,10 @@ require("swiper/components/lazy/lazy.min.css")
 const App = ({ root }) => {
   return (
     <React.Fragment>
-      <CssBaseline />
-      <StyledThemeProvider theme={styledTheme}>
-        <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
-      </StyledThemeProvider>
+        <CssBaseline />
+        <StyledThemeProvider theme={styledTheme}>
+          <MuiThemeProvider theme={theme}>{root}</MuiThemeProvider>
+        </StyledThemeProvider>
     </React.Fragment>
   )
 }

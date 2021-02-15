@@ -29,21 +29,26 @@ const Backdrop = styled.div<BackdropProps>`
 
 const DialogContainer = styled.div`
   width: 320px;
+  height: 180px;
 
   @media (min-width: 768px) {
     width: 420px;
+    height: 236.25px;
   }
 
   @media (min-width: 1024px) {
     width: 620px;
+    height: 348.75px;
   }
 
   @media (min-width: 1368px) {
     width: 720px;
+    height: 405px;
   }
 
   @media (min-width: 1600px) {
     width: 720px;
+    height: 405px;
   }
 `
 

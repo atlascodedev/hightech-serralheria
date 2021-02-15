@@ -11,7 +11,13 @@ import AppLayout from "../layout"
 import ServiceSection from "../components/AppComponents/ServiceSection"
 import PortfolioSection from "../components/AppComponents/Portfolio"
 import ContactSection from "../components/AppComponents/ContactSection"
-import { ServiceItem, ServiceGraphQuery, BlogPost, MenuItem } from "../types"
+import {
+  ServiceItem,
+  ServiceGraphQuery,
+  BlogPost,
+  MenuItem,
+  PortfolioItem,
+} from "../types"
 import { graphql, useStaticQuery } from "gatsby"
 import { portfolioListMockData } from "../mock_data"
 import Posts from "../components/AppComponents/Posts"
@@ -34,6 +40,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
         edges {
           node {
             frontmatter {
+              portfolioItemPicture
               title
               contentType
               description
@@ -94,10 +101,25 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     })
   }
 
+  const filterPortfolioItem = (
+    data: ServiceGraphQuery,
+    array: Array<PortfolioItem>,
+    contentFilter: string
+  ) => {
+    data.allMarkdownRemark.edges.forEach(value => {
+      if (value.node.frontmatter.contentType === contentFilter) {
+        array.push({
+          portfolioItemPicture: value.node.frontmatter.portfolioItemPicture,
+        })
+      }
+    })
+  }
+
   let blogPosts: Array<BlogPost> = []
   let serviceSerralheria: Array<ServiceItem> = []
   let serviceEletrica: Array<ServiceItem> = []
   let serviceSegurancaEletronica: Array<ServiceItem> = []
+  let portfolioList: Array<PortfolioItem> = []
 
   filterBlogPosts(servicesData, blogPosts, "blog")
   filterContentType(servicesData, serviceSerralheria, "serralheria")
@@ -107,8 +129,9 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
     serviceSegurancaEletronica,
     "segurancaEletronica"
   )
+  filterPortfolioItem(servicesData, portfolioList, "portfolio")
 
-  console.log(blogPosts)
+  console.log(portfolioList)
   // console.log(serviceEletrica)
   // console.log(serviceSegurancaEletronica)
 
@@ -138,7 +161,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       reference: null,
       itemDocumentId: null,
       sectionComponent: null,
-      childComponent: <DefenseSection ></DefenseSection>,
+      childComponent: <DefenseSection></DefenseSection>,
     },
 
     {
@@ -193,7 +216,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       sectionComponent: null,
       childComponent: (
         <PortfolioSection
-          portfolioList={portfolioListMockData}
+          portfolioList={portfolioList}
           portfolioSectionTitle="Nossos últimos serviços"
         />
       ),

@@ -52,6 +52,9 @@ export interface ServiceGraphQuery {
           blogTitle: string
           blogDate: string
           blogFeaturedImage: string
+
+          // Portfolio
+          portfolioItemPicture: string
         }
         html: string
         fields: {

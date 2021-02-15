@@ -16,7 +16,7 @@ import { navigate } from "gatsby"
 import { Menu } from "@material-ui/icons"
 import scrollIntoViewHelper from "../../../helper/scrollIntoView"
 import returnHome from "../../../helper/returnHome"
-import { MenuItem } from "../../../pages"
+import { MenuItem } from "../../../types"
 
 type AtlasBarBaseProp = {
   top: boolean
@@ -121,6 +121,8 @@ const AtlasAppBarLogo = styled.img<AtlasNavbarLogo>`
   width: 100px;
   height: 100%;
   flex-grow: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-left: 15px;
   /* margin-left: ${props => (props.top ? "2px" : "2px")}; */
   transition: all 0.5s ease;
@@ -287,7 +289,7 @@ const AppDrawer: React.FC<AppDrawerMainProps> = ({
         onOpen={handleOpen}
       >
         <Paper square className={classes.topMenuPaper} elevation={5}>
-          <Box pl={4} pr={5}>
+          <Box pl={4} pr={5} py={3}>
             <Button
               onClick={() => {
                 if (!isHome) {

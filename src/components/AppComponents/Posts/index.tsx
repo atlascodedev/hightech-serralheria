@@ -246,44 +246,46 @@ const Posts = ({ blogPosts = [] }: Props) => {
 
   return (
     <div>
-      <PostListRoot>
-        <PostListSectionTitle>Últimas postagens</PostListSectionTitle>
-        <PostListContainer>
-          {visiblePostList.map((value, index) => {
-            return (
-              <Fade key={index} in={true} timeout={{ enter: 750 }}>
+      {blogPosts.length > 0 ? (
+        <PostListRoot>
+          <PostListSectionTitle>Últimas postagens</PostListSectionTitle>
+          <PostListContainer>
+            {visiblePostList.map((value, index) => {
+              return (
+                <Fade key={index} in={true} timeout={{ enter: 750 }}>
+                  <div>
+                    <PostCardMain
+                      date={value.blogDate}
+                      image={value.blogFeaturedImage}
+                      readTime={value.readingTime}
+                      title={value.blogTitle}
+                      url={value.blogURL}
+                    />
+                  </div>
+                </Fade>
+              )
+            })}
+          </PostListContainer>
+
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
+            {postListState.length > 0 ? (
+              <Fade in={true} timeout={{ exit: 750, enter: 500 }} unmountOnExit>
                 <div>
-                  <PostCardMain
-                    date={value.blogDate}
-                    image={value.blogFeaturedImage}
-                    readTime={value.readingTime}
-                    title={value.blogTitle}
-                    url={value.blogURL}
-                  />
+                  <Button
+                    onClick={showMorePosts}
+                    color="primary"
+                    variant="outlined"
+                  >
+                    Ver mais
+                  </Button>
                 </div>
               </Fade>
-            )
-          })}
-        </PostListContainer>
-
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          {postListState.length > 0 ? (
-            <Fade in={true} timeout={{ exit: 750, enter: 500 }} unmountOnExit>
-              <div>
-                <Button
-                  onClick={showMorePosts}
-                  color="primary"
-                  variant="outlined"
-                >
-                  Ver mais
-                </Button>
-              </div>
-            </Fade>
-          ) : null}
-        </div>
-      </PostListRoot>
+            ) : null}
+          </div>
+        </PostListRoot>
+      ) : null}
     </div>
   )
 }

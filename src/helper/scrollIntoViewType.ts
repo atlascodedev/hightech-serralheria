@@ -11,10 +11,12 @@ const scrollIntoViewHelper = (
   const smoothScrollSupport =
     "scrollBehavior" in global.window.document.documentElement.style
 
+  const menuNameNormalized = convertToSlug(menuName).toLowerCase()
+
   if (global.window.location.pathname === "/") {
     try {
       if (isChrome || !smoothScrollSupport) {
-        scrollPolyfill(`#${convertToSlug(menuName).toLowerCase()}`)
+        scrollPolyfill(`#${menuNameNormalized}`)
       } else {
         ref!.current!.scrollIntoView({ behavior: "smooth", block: "start" })
       }

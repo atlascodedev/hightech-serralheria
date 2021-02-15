@@ -97,7 +97,7 @@ const Hero = ({
   mainText = "Oferecemos soluções em serralheria, elétricae segurança eletrônica.",
   subText = "Smaller font subtext goes here, font weight is also smaller lorem ipsum dolum damet",
   buttonText = "Call to action",
-  callToActionRef = null,
+  callToActionRef,
 }: Props) => {
   const MUITheme = useTheme()
   const bigScreen = useMediaQuery("@media(min-width:1024px)")
@@ -118,7 +118,7 @@ const Hero = ({
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => scrollIntoViewHelper(callToActionRef)}
+                onClick={() => scrollIntoViewHelper(callToActionRef, "contato")}
               >
                 {buttonText}
               </Button>
@@ -140,7 +140,7 @@ const Hero = ({
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => scrollIntoViewHelper(callToActionRef)}
+                onClick={() => scrollIntoViewHelper(callToActionRef, "contato")}
               >
                 {buttonText}
               </Button>

@@ -29,7 +29,7 @@ const Backdrop = styled.div<BackdropProps>`
 
 const DialogContainer = styled.div`
   width: 320px;
-  height: 180px;
+  height: 320px;
 
   @media (min-width: 768px) {
     width: 420px;

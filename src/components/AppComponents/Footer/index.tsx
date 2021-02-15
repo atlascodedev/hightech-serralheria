@@ -16,10 +16,16 @@ const MainFooter = styled.div`
 function Footer(props: any) {
   return (
     <MainFooter>
-      {
-        " © 2020 - Todos Direitos Reservados Atlas Code - Desenvolvimento web &\
+      <a
+        style={{ textDecoration: "none", color: "#fff" }}
+        href="https://atlascode.dev"
+        target="_blank"
+      >
+        {
+          " © 2020 - Todos Direitos Reservados Atlas Code - Desenvolvimento web &\
       estratégia"
-      }
+        }
+      </a>
     </MainFooter>
   )
 }

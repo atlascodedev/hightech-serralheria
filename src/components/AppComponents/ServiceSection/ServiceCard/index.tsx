@@ -38,7 +38,7 @@ const ServiceCardBody = styled("div")`
   min-height: 170px;
   height: auto;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-  border-radius: 10px;
+  border-radius: 16px;
   background: #ffffff;
   z-index: 5;
   display: flex;
@@ -74,11 +74,11 @@ const ServiceCardTitle = styled("div")`
 `
 
 const ServiceCardText = styled("div")`
-  font-size: 10px;
+  font-size: 16px;
   padding: 20px;
 
   @media (min-width: 1024px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 

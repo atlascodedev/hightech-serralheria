@@ -45,6 +45,7 @@ const PortfolioSectionTitle = styled.div`
   font-weight: 700;
   text-align: center;
   padding-top: 50px;
+  font-size: 24px;
 
   @media (min-width: 1024px) {
     font-size: 40px;
@@ -65,7 +66,7 @@ const PortfolioSection = ({
     setActivePicture(src)
   }
 
-  console.log(showPicture)
+  // console.log(showPicture)
 
   return (
     <div>
@@ -82,20 +83,12 @@ const PortfolioSection = ({
             slidesPerView={1}
             // noSwiping
             // noSwipingClass={"no-swipe"}
-            autoplay={{
-              delay: 0,
-              waitForTransition: false,
-              disableOnInteraction: false,
-            }}
+            autoplay={true}
             speed={6000}
             // loop={true}
             breakpoints={{
               1024: {
-                autoplay: {
-                  delay: 2000,
-                  waitForTransition: true,
-                  disableOnInteraction: false,
-                },
+                autoplay: true,
                 slidesPerView: portfolioList.length > 2 ? 3 : 1,
                 speed: 6000,
                 // loop: true,

@@ -115,7 +115,7 @@ const DefenseSection = (props: Props) => {
               <DefenseCard
                 title="Elétrica"
                 text={
-                  "Tudo o que você precisa para a sua rede elétrica residencial empresarial ou industrial"
+                  "Tudo o que você precisa para a sua rede elétrica residencial empresarial ou industrial."
                 }
                 icon={AccountBalance}
               />

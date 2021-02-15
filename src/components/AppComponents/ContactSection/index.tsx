@@ -108,30 +108,30 @@ const ContactSection = (props: Props) => {
           <div className="infoPhones">
             <div className="infoPhonesHeader">Telefones:</div>
             <div className="infoPhones-1">{"(48) 3065-6712"}</div>
-            <div className="infoPhones-2">{"(48) 9-9857-1123"}</div>
+            <div className="infoPhones-2">{"(48) 9-9124-0082"}</div>
           </div>
 
           <div className="infoMail">
             <div className="infoMailHeader">E-mail:</div>
-            <div className="infoMail-1">{"hightech@serralheria.com"}</div>
+            <div className="infoMail-1">{"comercial@hightechsc.com.br"}</div>
           </div>
 
           <div className="infoSocials">
             <div className="infoFacebookIcon">
-              <a href="#">
+              <a href="https://www.facebook.com/serralheriahightech">
                 <SvgIcon component={Facebook} />
               </a>
             </div>
             <div className="infoWhatsAppIcon">
-              <a href="#">
+              <a href="https://wa.link/s2tjkr">
                 <SvgIcon component={WhatsApp} />
               </a>
             </div>
-            <div className="infoInstagramIcon">
+            {/* <div className="infoInstagramIcon">
               <a href="#">
                 <SvgIcon component={Instagram} />
               </a>
-            </div>
+            </div> */}
           </div>
         </ContactSectionInfoContainer>
       </ContactSectionGridContainer>

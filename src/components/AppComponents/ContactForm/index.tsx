@@ -3,7 +3,7 @@ import { Formik, Form } from "formik"
 import * as Yup from "yup"
 import styled from "styled-components"
 import { Box, Button, SvgIcon, useTheme } from "@material-ui/core"
-import { AccountCircle } from "@material-ui/icons"
+import { AccountCircle, Email, Phone } from "@material-ui/icons"
 import FormikField from "../../UtilityComponents/FormikField"
 import MaskInput from "../../UtilityComponents/MaskInput"
 import ConfirmationDialog from "../../UtilityComponents/ConfirmationDialog"
@@ -189,10 +189,7 @@ const ContactFormMain = (props: Props) => {
                   </ContactFormRowContainer>
                   <ContactFormRowContainer>
                     <Box width="100%" height="100%" alignSelf="center">
-                      <SvgIcon
-                        className="formRowIcon"
-                        component={AccountCircle}
-                      />
+                      <SvgIcon className="formRowIcon" component={Phone} />
                     </Box>
                     <MaskInput
                       mask={" (9 9)  9 - 9 9 9 9 - 9 9 9 9"}
@@ -206,10 +203,7 @@ const ContactFormMain = (props: Props) => {
                   </ContactFormRowContainer>
                   <ContactFormRowContainer>
                     <Box width="100%" height="100%" alignSelf="center">
-                      <SvgIcon
-                        className="formRowIcon"
-                        component={AccountCircle}
-                      />
+                      <SvgIcon className="formRowIcon" component={Email} />
                     </Box>
                     <FormikField
                       fullWidth

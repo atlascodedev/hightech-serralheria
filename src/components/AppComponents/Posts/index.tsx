@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Button, Fade, SvgIcon } from "@material-ui/core"
 import { AccessTime } from "@material-ui/icons"
 import { Link } from "gatsby"
+import author from "../../../images/high-tech-logo-svg.svg"
 
 const PostListRoot = styled.div`
   padding-top: 5vh;
@@ -115,6 +116,7 @@ const PostAuthorIconContainer = styled.div`
   padding-top: 25px;
   padding-bottom: 25px;
   transform: translateX(-5px);
+  font-family: ${props => props.theme.typography.fontFamily};
 
   .outer-circle {
     width: 60px;
@@ -133,7 +135,16 @@ const PostAuthorIconContainer = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #d8d8d8;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > div {
+      font-weight: 700;
+      color: ${props => props.theme.palette.primary.main};
+    }
   }
 `
 
@@ -174,7 +185,9 @@ const PostCardMain = ({
         <PostAuthorContainer>
           <PostAuthorIconContainer>
             <div className="outer-circle">
-              <div className="inner-circle"></div>
+              <div className="inner-circle">
+                <div>HT</div>
+              </div>
             </div>
           </PostAuthorIconContainer>
 

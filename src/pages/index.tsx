@@ -19,7 +19,7 @@ import {
   PortfolioItem,
 } from "../types"
 import { graphql, useStaticQuery } from "gatsby"
-import { portfolioListMockData } from "../mock_data"
+import { portfolioListMockData, serviceListMockData } from "../mock_data"
 import Posts from "../components/AppComponents/Posts"
 
 interface IndexProps {
@@ -131,7 +131,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
   )
   filterPortfolioItem(servicesData, portfolioList, "portfolio")
 
-  console.log(portfolioList)
+  // console.log(portfolioList)
   // console.log(serviceEletrica)
   // console.log(serviceSegurancaEletronica)
 

@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Theme, useTheme, withTheme } from "@material-ui/core/styles"
 import { Button, useMediaQuery } from "@material-ui/core"
 import scrollIntoViewHelper from "../../../helper/scrollIntoViewType"
+import WhatsAppButton from "../../UtilityComponents/WhatsAppButton"
 
 type HeroContainerProps = {
   testProp?: string
@@ -103,6 +104,7 @@ const Hero = ({
 
   return (
     <React.Fragment>
+      <WhatsAppButton />
       {bigScreen ? (
         <HeroContainer
           img={heroImage}

@@ -80,7 +80,7 @@ const PortfolioSection = ({
           <Swiper
             id="swiper-portfolio"
             slidesPerView={1}
-            noSwiping
+            // noSwiping
             // noSwipingClass={"no-swipe"}
             autoplay={{
               delay: 0,
@@ -88,7 +88,7 @@ const PortfolioSection = ({
               disableOnInteraction: false,
             }}
             speed={6000}
-            loop={true}
+            // loop={true}
             breakpoints={{
               1024: {
                 autoplay: {
@@ -98,7 +98,7 @@ const PortfolioSection = ({
                 },
                 slidesPerView: portfolioList.length > 2 ? 3 : 1,
                 speed: 6000,
-                loop: true,
+                // loop: true,
               },
             }}
           >

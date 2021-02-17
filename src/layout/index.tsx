@@ -17,6 +17,18 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children, menu }) => {
     <React.Fragment>
       <Helmet>
         <title>High Tech Serralheria</title>
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MVN6JE404R"
+        ></script>
+        <script>
+          {` window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MVN6JE404R');`}
+        </script>
       </Helmet>
       <Navbar height={"50px"} menu={menu} logo={logo} />
       <main>{children}</main>

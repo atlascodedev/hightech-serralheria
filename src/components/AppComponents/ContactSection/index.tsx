@@ -102,7 +102,8 @@ const ContactSection = (props: Props) => {
           </div>
 
           <div className="infoAddress">
-            Servidão Ana Cardoso, 267 - Florianópolis/SC
+          Servidão Altino Manuel Claudino, 30
+São João do Rio Vermelho - Florianópolis/SC
           </div>
 
           <div className="infoPhones">

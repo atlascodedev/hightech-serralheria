@@ -21,6 +21,7 @@ import {
 import { graphql, useStaticQuery } from "gatsby"
 import { portfolioListMockData, serviceListMockData } from "../mock_data"
 import Posts from "../components/AppComponents/Posts"
+import Portfolio from "../components/AppComponents/Portfolio/Portfolio"
 
 interface IndexProps {
   testMe: Array<string>
@@ -215,9 +216,9 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       itemDocumentId: null,
       sectionComponent: null,
       childComponent: (
-        <PortfolioSection
+        <Portfolio
           portfolioList={portfolioList}
-          portfolioSectionTitle="Nossos últimos serviços"
+          sectionTitle="Nossos últimos serviços"
         />
       ),
     },

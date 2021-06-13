@@ -20,38 +20,6 @@ type PortfolioCardProps = {
   img: string
 }
 
-const PortfolioCardRoot = styled.div<PortfolioCardProps>`
-  width: 320px;
-  height: 240px;
-  border-radius: 10px;
-  background-image: ${props => `url(${props.img})`};
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  @media (min-width: 1024px) {
-    width: 393px;
-    height: 295px;
-  }
-`
-
-const PortfolioSectionRoot = styled.div`
-  background-color: #f4f4f4;
-  font-family: ${props => props.theme.typography.fontFamily};
-  color: ${props => props.theme.palette.primary.main};
-`
-
-const PortfolioSectionTitle = styled.div`
-  font-weight: 700;
-  text-align: center;
-  padding-top: 50px;
-  font-size: 24px;
-
-  @media (min-width: 1024px) {
-    font-size: 40px;
-  }
-`
-
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
 const PortfolioSection = ({
@@ -65,8 +33,6 @@ const PortfolioSection = ({
     setShowPicture(true)
     setActivePicture(src)
   }
-
-  // console.log(showPicture)
 
   return (
     <div>
@@ -121,3 +87,35 @@ const PortfolioSection = ({
 }
 
 export default PortfolioSection
+
+const PortfolioCardRoot = styled.div<PortfolioCardProps>`
+  width: 320px;
+  height: 240px;
+  border-radius: 10px;
+  background-image: ${props => `url(${props.img})`};
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  @media (min-width: 1024px) {
+    width: 393px;
+    height: 295px;
+  }
+`
+
+const PortfolioSectionRoot = styled.div`
+  background-color: #f4f4f4;
+  font-family: ${props => props.theme.typography.fontFamily};
+  color: ${props => props.theme.palette.primary.main};
+`
+
+const PortfolioSectionTitle = styled.div`
+  font-weight: 700;
+  text-align: center;
+  padding-top: 50px;
+  font-size: 24px;
+
+  @media (min-width: 1024px) {
+    font-size: 40px;
+  }
+`

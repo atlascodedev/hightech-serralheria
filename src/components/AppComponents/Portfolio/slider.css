@@ -6,7 +6,13 @@
 
 #swiper-portfolio.swiper-container {
   height: auto;
-
   padding-top: 10vh;
   padding-bottom: 10vh;
+}
+
+@media (min-width: 1024px) {
+  #swiper-portfolio.swiper-container {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
 }

@@ -12,6 +12,11 @@ import "./slider.css"
 import ServiceCard from "../ServiceCard"
 import { graphql, useStaticQuery } from "gatsby"
 import { ServiceItem, ServiceItemList } from "../../../../types"
+import {
+  ServiceNavigationBackButton,
+  ServiceNavigationMobile,
+  ServiceNavigationNextButton,
+} from "../index"
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay])
 
@@ -38,12 +43,14 @@ const ServiceSlider = ({
 
   return (
     <div>
+      <ServiceNavigationBackButton id="service-prev" />
+      <ServiceNavigationNextButton id="service-next" />
       <Swiper
+        navigation={{ nextEl: "#service-next", prevEl: "#service-prev" }}
         centeredSlides
         id="swiper-1"
         slidesPerView={1}
         initialSlide={1}
-        pagination={{ clickable: true }}
         autoplay={false}
         watchOverflow={true}
         spaceBetween={50}
@@ -73,6 +80,7 @@ const ServiceSlider = ({
           )
         })}
       </Swiper>
+      <ServiceNavigationMobile />
     </div>
   )
 }

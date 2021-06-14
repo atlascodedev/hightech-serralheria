@@ -7,14 +7,20 @@ import "./slider.css"
 import { Button, SvgIcon } from "@material-ui/core"
 import { motion } from "framer-motion"
 import { ArrowForward } from "@material-ui/icons"
+import scrollIntoViewHelper from "../../../helper/scrollIntoView"
 
 SwiperCore.use([Navigation, Pagination, Lazy])
 
 interface IPortfolioProps extends PortfolioItemList {
   sectionTitle: string
+  ctaRef: any
 }
 
-const Portfolio = ({ portfolioList = [], sectionTitle }: IPortfolioProps) => {
+const Portfolio = ({
+  portfolioList = [],
+  sectionTitle,
+  ctaRef,
+}: IPortfolioProps) => {
   return (
     <Root>
       {global.window.innerWidth > 768 ? null : (
@@ -24,7 +30,11 @@ const Portfolio = ({ portfolioList = [], sectionTitle }: IPortfolioProps) => {
             Trabalhamos com serralheria, segurança eletrônica e elétrica para
             residencias, empresas e construtoras.
           </FirstSlideAux>
-          <Button variant="contained" color="primary">
+          <Button
+            onClick={() => scrollIntoViewHelper(ctaRef, "contato")}
+            variant="contained"
+            color="primary"
+          >
             Faça seu orçamento
           </Button>
         </FirstSliderBase>
@@ -73,7 +83,11 @@ const Portfolio = ({ portfolioList = [], sectionTitle }: IPortfolioProps) => {
                     Trabalhamos com serralheria, segurança eletrônica e elétrica
                     para residencias, empresas e construtoras.
                   </FirstSlideAux>
-                  <Button variant="contained" color="primary">
+                  <Button
+                    onClick={() => scrollIntoViewHelper(ctaRef, "contato")}
+                    variant="contained"
+                    color="primary"
+                  >
                     Faça seu orçamento
                   </Button>
                 </FirstSliderBase>

@@ -215,23 +215,6 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
             },
           ]}
         />
-
-        // <div>
-        //   <ServiceSection
-        //     serviceCardActionRef={contactRef}
-        //     serviceList={serviceSerralheria}
-        //     serviceSectionTitle={"Serralheria"}
-        //   />
-        //   <ServiceSection
-        //     serviceList={serviceSegurancaEletronica}
-        //     rootContrast={true}
-        //     serviceSectionTitle={"Segurança eletrônica"}
-        //   />
-        //   <ServiceSection
-        //     serviceList={serviceEletrica}
-        //     serviceSectionTitle={"Elétrica"}
-        //   />
-        // </div>
       ),
     },
     {
@@ -249,6 +232,7 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       sectionComponent: null,
       childComponent: (
         <Portfolio
+          ctaRef={contactRef}
           portfolioList={portfolioList}
           sectionTitle="Nossos últimos serviços"
         />

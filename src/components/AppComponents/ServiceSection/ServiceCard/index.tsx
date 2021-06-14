@@ -24,11 +24,11 @@ const ServiceCardImage = styled("div")<ServiceCardImageProps>`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 6px 6px 0px 0px;
   z-index: 10;
   @media (min-width: 1024px) {
-    width: 385px;
-    height: 265px;
+    width: 335px;
+    height: 215px;
   }
 `
 
@@ -38,7 +38,7 @@ const ServiceCardBody = styled("div")`
   min-height: 170px;
   height: auto;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.45);
-  border-radius: 16px;
+  border-radius: 0px 0px 6px 6px;
   background: #ffffff;
   z-index: 5;
   display: flex;
@@ -54,8 +54,8 @@ const ServiceCardBody = styled("div")`
 
   transform: translateY(-25px);
   @media (min-width: 1024px) {
-    width: 380px;
-    min-height: 227.32px;
+    width: 330px;
+    min-height: 265px;
     height: auto;
   }
 `

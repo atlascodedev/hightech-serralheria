@@ -128,7 +128,7 @@ const Root = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
-  background-color: rgba(38, 50, 54, 0.95);
+  background-color: rgba(0, 0, 0, 0.9);
 `
 
 const BackgroundPattern = styled.img`

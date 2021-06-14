@@ -42,6 +42,7 @@ const ServiceSlider = ({
         centeredSlides
         id="swiper-1"
         slidesPerView={1}
+        initialSlide={1}
         pagination={{ clickable: true }}
         autoplay={false}
         watchOverflow={true}

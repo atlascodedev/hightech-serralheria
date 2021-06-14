@@ -47,17 +47,18 @@ type AppDrawerMainProps = {
   menu?: Array<MenuItem>
 }
 
-const AtlasAppBarBase = styled.div<AtlasBarBaseProp>`
+const AtlasAppBarBase = styled.div`
   display: flex;
   width: 100%;
-  background-color: ${props => (props.top ? "#fff" : "#fff")};
+  background-color: rgba(255, 255, 255, 0.55);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(40px);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  min-height: ${props => (props.minHeight ? props.minHeight : "65px")};
+  min-height: 85px;
   position: fixed;
   z-index: 1199;
   justify-content: center;
-  height: ${props =>
-    props.top ? "65px" : props.minHeight ? props.minHeight : "65px"};
+  height: 85px;
   transition: all 0.5s ease;
 
   /* Additional styles to prevent Firefox 2D rendering and transition bugs that will lead to flickering on said transition */
@@ -65,15 +66,13 @@ const AtlasAppBarBase = styled.div<AtlasBarBaseProp>`
   filter: grayscale(0%);
 
   @media (min-width: 768px) {
-    box-shadow: ${props =>
-      props.top ? "none" : "0px 4px 4px rgba(0, 0, 0, 0.25)"};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `
 
 const AtlasAppBarHeightFix = styled.div<AtlasBarBaseProp>`
-  min-height: ${props => (props.minHeight ? props.minHeight : "65px")};
-  height: ${props =>
-    props.top ? "65px" : props.minHeight ? props.minHeight : "65px"};
+  min-height: 85px;
+  height: 85px;
   top: 0;
   left: 0;
   width: 100%;
@@ -99,12 +98,12 @@ const AtlasAppBarItemList = styled.ul<AtlasNavbarListProp>`
   flex-direction: row;
   margin: 0;
   width: 100%;
-  color: ${props => (props.top ? "#222" : "#222")};
+  color: #222;
   -webkit-text-stroke: 0.1px black;
   text-rendering: optimizeLegibility;
   padding: 0;
   transition: all 0.5s ease-in-out;
-  padding-right: ${props => (props.top ? "10em" : "0px")};
+  padding-right: 10px;
 
   & > li {
     padding: 0;
@@ -124,12 +123,11 @@ const AtlasAppBarLogo = styled.img<AtlasNavbarLogo>`
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 15px;
-  /* margin-left: ${props => (props.top ? "2px" : "2px")}; */
   transition: all 0.5s ease;
   @media (min-width: 768px) {
-    margin-left: ${props => (props.top ? "2em" : "20px")};
-    width: ${props => (props.top ? "100px" : "100px")};
-    height: ${props => (props.top ? "100%" : "100%")};
+    margin-left: 20px;
+    width: 100px;
+    height: 100%;
   }
 `
 
@@ -187,7 +185,7 @@ const Navbar: React.FC<NavbarMainProps> = ({
 
   return (
     <div>
-      <AtlasAppBarBase minHeight={appBarMinHeight} top={isTop}>
+      <AtlasAppBarBase>
         <AtlasAppBarItemContainer>
           <AtlasAppBarLogo
             onClick={returnHome}

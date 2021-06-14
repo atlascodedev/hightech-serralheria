@@ -24,6 +24,7 @@ export const styledTheme = {
     },
     secondary: {
       main: "#17396B",
+      contrastText: "#fff"
     },
   },
 

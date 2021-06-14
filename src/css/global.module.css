@@ -37,3 +37,7 @@ html {
 ::-webkit-scrollbar-corner {
   background: #1a1a1a;
 }
+
+:focus {
+  outline-width: 0px !important;
+}

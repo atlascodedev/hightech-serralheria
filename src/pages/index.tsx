@@ -19,7 +19,6 @@ import {
   PortfolioItem,
 } from "../types"
 import { graphql, useStaticQuery } from "gatsby"
-import { portfolioListMockData, serviceListMockData } from "../mock_data"
 import Posts from "../components/AppComponents/Posts"
 import Portfolio from "../components/AppComponents/Portfolio/Portfolio"
 

@@ -125,7 +125,7 @@ const AtlasAppBarLogo = styled.img<AtlasNavbarLogo>`
   margin-left: 15px;
   transition: all 0.5s ease;
   @media (min-width: 768px) {
-    margin-left: 20px;
+    margin-left: 45px;
     width: 100px;
     height: 100%;
   }

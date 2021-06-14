@@ -4,7 +4,7 @@ import { Swiper as SwiperCore, Navigation, Pagination, Lazy } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import styled from "styled-components"
 import "./slider.css"
-import { Button, SvgIcon } from "@material-ui/core"
+import { Button, SvgIcon, useMediaQuery } from "@material-ui/core"
 import { motion } from "framer-motion"
 import { ArrowForward } from "@material-ui/icons"
 import scrollIntoViewHelper from "../../../helper/scrollIntoView"
@@ -21,9 +21,11 @@ const Portfolio = ({
   sectionTitle,
   ctaRef,
 }: IPortfolioProps) => {
+  const isNotMobile = useMediaQuery("@media(min-width: 768px)")
+
   return (
     <Root>
-      {global.window && global.window.innerWidth > 768 ? null : (
+      {isNotMobile ? null : (
         <FirstSliderBase>
           <FirstSlideTitle>Confira nossos últimos serviços</FirstSlideTitle>
           <FirstSlideAux>
@@ -56,7 +58,7 @@ const Portfolio = ({
         }}
         id="swiper-portfolio"
       >
-        {global.window && global.window.innerWidth > 768 ? (
+        {isNotMobile ? (
           <SwiperSlide>
             {({ isActive }: { isActive: boolean }) => {
               console.log(isActive, "is it?")

@@ -11,11 +11,11 @@ type ServiceSectionRootProps = {
 
 const ServiceSectionRoot = styled("div")<ServiceSectionRootProps>`
   background-color: ${props => (props.contrast ? " #f3f3f3" : "#fff")};
-  padding-top: 5vh;
+  /* padding-top: 5vh; */
   padding-bottom: 5vh;
 
   @media (min-width: 1024px) {
-    padding-top: 10vh;
+    /* padding-top: 10vh; */
     padding-bottom: 10vh;
   }
 `
@@ -52,8 +52,6 @@ const ServiceSection = ({
     <div>
       {serviceList.length ? (
         <ServiceSectionRoot contrast={rootContrast}>
-          <ServiceSectionTitle>{serviceSectionTitle}</ServiceSectionTitle>
-
           <ServiceSlider
             serviceCardActionRef={serviceCardActionRef}
             serviceList={serviceList}

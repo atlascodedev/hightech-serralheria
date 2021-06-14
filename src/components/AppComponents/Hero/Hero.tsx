@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Button } from "@material-ui/core"
 import scrollIntoViewHelper from "../../../helper/scrollIntoView"
+import bgPattern from "../../../images/effect.webp"
+import heroImage2 from "../../../images/cropped-hero-img.webp"
 
 interface IHeroProps {
   heroImage: string
@@ -21,7 +23,7 @@ const Hero = ({
 }: IHeroProps) => {
   return (
     <Root>
-      <BackgroundPattern src={"img/effect.webp"} />
+      <BackgroundPattern src={bgPattern} />
       <Grid>
         <IntroContainer>
           <IntroTitle>{mainText}</IntroTitle>
@@ -37,7 +39,7 @@ const Hero = ({
 
         <HeroImageContainer>
           <HeroImageBackground />
-          <HeroImage src="img/cropped-hero-img.webp" />
+          <HeroImage src={heroImage2} />
         </HeroImageContainer>
       </Grid>
     </Root>

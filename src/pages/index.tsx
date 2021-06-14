@@ -21,6 +21,7 @@ import {
 import { graphql, useStaticQuery } from "gatsby"
 import Posts from "../components/AppComponents/Posts"
 import Portfolio from "../components/AppComponents/Portfolio/Portfolio"
+import ServiceTabs from "../components/AppComponents/ServiceSection/ServiceTabs"
 
 interface IndexProps {
   testMe: Array<string>
@@ -183,22 +184,54 @@ const IndexPage: React.FC<IndexProps> = ({ testMe, onceAgain }) => {
       itemDocumentId: null,
       sectionComponent: null,
       childComponent: (
-        <div>
-          <ServiceSection
-            serviceCardActionRef={contactRef}
-            serviceList={serviceSerralheria}
-            serviceSectionTitle={"Serralheria"}
-          />
-          <ServiceSection
-            serviceList={serviceSegurancaEletronica}
-            rootContrast={true}
-            serviceSectionTitle={"Segurança eletrônica"}
-          />
-          <ServiceSection
-            serviceList={serviceEletrica}
-            serviceSectionTitle={"Elétrica"}
-          />
-        </div>
+        <ServiceTabs
+          tabItems={[
+            {
+              label: "Serralheria",
+              component: (
+                <ServiceSection
+                  serviceList={serviceSerralheria}
+                  serviceSectionTitle={"Serralheria"}
+                />
+              ),
+            },
+            {
+              label: "Segurança eletrônica",
+              component: (
+                <ServiceSection
+                  serviceList={serviceSegurancaEletronica}
+                  serviceSectionTitle={"Segurança eletrônica"}
+                />
+              ),
+            },
+            {
+              label: "Elétrica",
+              component: (
+                <ServiceSection
+                  serviceList={serviceEletrica}
+                  serviceSectionTitle={"Elétrica"}
+                />
+              ),
+            },
+          ]}
+        />
+
+        // <div>
+        //   <ServiceSection
+        //     serviceCardActionRef={contactRef}
+        //     serviceList={serviceSerralheria}
+        //     serviceSectionTitle={"Serralheria"}
+        //   />
+        //   <ServiceSection
+        //     serviceList={serviceSegurancaEletronica}
+        //     rootContrast={true}
+        //     serviceSectionTitle={"Segurança eletrônica"}
+        //   />
+        //   <ServiceSection
+        //     serviceList={serviceEletrica}
+        //     serviceSectionTitle={"Elétrica"}
+        //   />
+        // </div>
       ),
     },
     {

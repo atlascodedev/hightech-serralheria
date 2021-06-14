@@ -23,7 +23,7 @@ const Portfolio = ({
 }: IPortfolioProps) => {
   return (
     <Root>
-      {global.window.innerWidth > 768 ? null : (
+      {global.window && global.window.innerWidth > 768 ? null : (
         <FirstSliderBase>
           <FirstSlideTitle>Confira nossos últimos serviços</FirstSlideTitle>
           <FirstSlideAux>
@@ -56,7 +56,7 @@ const Portfolio = ({
         }}
         id="swiper-portfolio"
       >
-        {global.window.innerWidth > 768 ? (
+        {global.window && global.window.innerWidth > 768 ? (
           <SwiperSlide>
             {({ isActive }: { isActive: boolean }) => {
               console.log(isActive, "is it?")

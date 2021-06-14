@@ -77,7 +77,10 @@ export default function ServiceTabs({ tabItems = [] }: ISimpleTabsProps) {
           <Tabs
             id="tab-special"
             style={{
-              width: global.window.innerWidth > 768 ? "50%" : "100%",
+              width:
+                global.window && global.window.innerWidth > 768
+                  ? "50%"
+                  : "100%",
               marginRight: "auto",
               marginLeft: "auto",
               paddingTop: "25px",

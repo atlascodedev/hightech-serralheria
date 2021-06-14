@@ -1,7 +1,8 @@
 import { useTheme } from "@material-ui/core"
-import { animate } from "framer-motion"
+import { animate, motion } from "framer-motion"
 import React from "react"
 import { Waypoint } from "react-waypoint"
+import { InView } from "react-intersection-observer"
 import styled from "styled-components"
 
 const AboutUsRootContainer = styled.div`
@@ -57,7 +58,7 @@ const AboutUsMainText = styled.div`
   margin-left: 15px;
   margin-right: 15px;
 
-  & > span {
+  & > div > span {
     color: #333;
     font-weight: 700;
   }
@@ -71,7 +72,7 @@ const AboutUsMainText = styled.div`
   }
 `
 
-const AboutUsCounterContainer = styled.div`
+const AboutUsCounterContainer = styled(motion.div)`
   width: 100%;
 
   @media (min-width: 1024px) {
@@ -135,32 +136,95 @@ const AboutUs = ({
         bottomOffset={600}
         onEnter={() => changeNumOfClientsWithMotion()}
       />
-      <AboutUsRootContainer>
-        <AboutUsGridContainer>
-          <AboutUsImageContainer
-            imgMobile={backgroundImageMobile}
-            img={backgroundImage}
-          ></AboutUsImageContainer>
+      <InView triggerOnce={false} threshold={0.55}>
+        {({ entry, inView, ref }) => {
+          return (
+            <AboutUsRootContainer ref={ref}>
+              <AboutUsGridContainer>
+                <AboutUsImageContainer
+                  imgMobile={backgroundImageMobile}
+                  img={backgroundImage}
+                ></AboutUsImageContainer>
 
-          <AboutUsTextContainer>
-            <AboutUsMainText>
-              A <span>High Tech Serralheria</span> está presente há mais de 5
-              anos no mercado, prestando serviços com excelência para
-              residencias, empresas e construtoras.
-              <div className="secondParagraph">
-                O nosso foco é a solução dos seus problemas, com materiais de
-                qualidade e atendimento diferenciado, sendo o nosso objetivo a
-                entrega do melhor serviço possível.
-              </div>
-            </AboutUsMainText>
+                <AboutUsTextContainer>
+                  <AboutUsMainText>
+                    <motion.div
+                      initial="hidden"
+                      animate={inView ? "visible" : "hidden"}
+                      variants={{
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                        },
+                        hidden: {
+                          opacity: 0,
+                          y: 50,
+                        },
+                      }}
+                      transition={{
+                        duration: 0.5,
+                      }}
+                    >
+                      A <span>High Tech Serralheria</span> está presente há mais
+                      de 5 anos no mercado, prestando serviços com excelência
+                      para residencias, empresas e construtoras.
+                    </motion.div>
+                    <motion.div
+                      initial="hidden"
+                      animate={inView ? "visible" : "hidden"}
+                      variants={{
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                        },
+                        hidden: {
+                          opacity: 0,
+                          y: 50,
+                        },
+                      }}
+                      transition={{
+                        delay: 0.25,
+                        duration: 0.5,
+                      }}
+                      className="secondParagraph"
+                    >
+                      O nosso foco é a solução dos seus problemas, com materiais
+                      de qualidade e atendimento diferenciado, sendo o nosso
+                      objetivo a entrega do melhor serviço possível.
+                    </motion.div>
+                  </AboutUsMainText>
 
-            <AboutUsCounterContainer>
-              <AboutUsCounter>+ de {numOfClients.toString()}</AboutUsCounter>
-              <AboutUsCounterText>clientes satisfeitos</AboutUsCounterText>
-            </AboutUsCounterContainer>
-          </AboutUsTextContainer>
-        </AboutUsGridContainer>
-      </AboutUsRootContainer>
+                  <AboutUsCounterContainer
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                    variants={{
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                      },
+                      hidden: {
+                        opacity: 0,
+                        y: 50,
+                      },
+                    }}
+                    transition={{
+                      delay: 0.35,
+                      duration: 0.5,
+                    }}
+                  >
+                    <AboutUsCounter>
+                      + de {numOfClients.toString()}
+                    </AboutUsCounter>
+                    <AboutUsCounterText>
+                      clientes satisfeitos
+                    </AboutUsCounterText>
+                  </AboutUsCounterContainer>
+                </AboutUsTextContainer>
+              </AboutUsGridContainer>
+            </AboutUsRootContainer>
+          )
+        }}
+      </InView>
     </div>
   )
 }
